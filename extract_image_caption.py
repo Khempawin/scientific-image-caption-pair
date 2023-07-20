@@ -1,14 +1,16 @@
+import logging
+import re
+import io
 import os
 import subprocess
-from os import DirEntry
-from typing import List, Dict, Any
 import shutil
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from time import time
-import logging
-import re
-import io
+from os import DirEntry
+from xml.etree.ElementTree import Element
+from typing import List, Dict, Any
+
 
 def extract_directory(target_root:str) -> List[DirEntry]:
     return [x for x in os.scandir(target_root) if len(x.name) == 2 and x.is_dir()]
@@ -61,6 +63,12 @@ def load_cleaned_xml(file_path: str):
     tree = ET.parse(f)
     return tree
 
+def node_has_graphic(node: Element):
+    children_tag_set = set([child.tag for child in node.findall("*")])
+    return "graphic" in children_tag_set
+
+def process_node_with_graphic(node: Element):
+    return
 
 def process_document_tar(entry: DirEntry, output_image_dir: str="output/images", remove_dir=True):
     # Extract nxml file
@@ -75,7 +83,7 @@ def process_document_tar(entry: DirEntry, output_image_dir: str="output/images",
     # Extract image(figure) file names from nxml + captions
     tree = load_cleaned_xml(metadata_file_path)
 
-    figure_nodes = [node for node in tree.iter() if node.tag == "fig"]
+    figure_nodes = [node for node in tree.iter() if node_has_graphic(node)]
 
     if len(figure_nodes) == 0:
         # Remove temp directory

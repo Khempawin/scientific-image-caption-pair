@@ -37,7 +37,7 @@ def load_cleaned_xml(file_path: str):
         raw_text = "".join(f.readlines())
 
     cleaned_text = re.sub(r"<xref[^>]*>[^<]*<\/xref>", "", raw_text)
-    cleaned_text = re.sub(r"(<bold>|<\/bold>|<italic>|<\/italic>)", "", cleaned_text)
+    cleaned_text = re.sub(r"(<bold[^>]*>|<\/bold>|<italic[^>]*>|<\/italic>)", "", cleaned_text)
     cleaned_text = re.sub(r"\&#x.{5};", "", cleaned_text)
 
     f = io.StringIO(cleaned_text)

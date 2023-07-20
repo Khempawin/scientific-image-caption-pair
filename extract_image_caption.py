@@ -89,6 +89,9 @@ def process_graphic(tar_archive: TarFile, node: Element, document_id: str, outpu
                 image_name = "{}{}".format(graphic_ref, extension)
                 break
     
+    if(image_name is None):
+        return None
+    
     image_file = tar_archive.extractfile("{}/{}".format(document_id, image_name))
     
     # Save image to output directory

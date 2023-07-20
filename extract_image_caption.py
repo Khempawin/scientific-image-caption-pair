@@ -2,8 +2,6 @@ import logging
 import re
 import io
 import os
-import subprocess
-import shutil
 import xml.etree.ElementTree as ET
 import tarfile
 from pathlib import Path

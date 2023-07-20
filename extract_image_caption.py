@@ -166,7 +166,7 @@ def process_tar_dir(target_dir:str, output_dir:str, first_level_code:str, second
 
     record_list = list()
 
-    for doc in list(documents)[:1]:
+    for doc in list(documents):
         subrecord_list = process_document_tar(doc,
                                               output_image_dir=output_image_dir, remove_dir=remove_dir)
         record_list.extend(subrecord_list)

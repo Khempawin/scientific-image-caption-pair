@@ -49,11 +49,17 @@ def node_has_graphic(node: Element):
 
 
 def process_caption(node: Element):
+    # Find caption node
+    caption_node = node.find("./caption")
+
+    if(caption_node is None):
+        return ""
+
     # For captions with <p>
-    caption_p = node.find("./caption").findtext("./p")
+    caption_p = caption_node.findtext("./p")
     caption_p = caption_p.strip().replace("\n", "") if caption_p else ""
     # For captions with <title>
-    caption_title = node.find("./caption").findtext("./title")
+    caption_title = caption_node.findtext("./title")
     caption_title = caption_title.strip().replace("\n", "") if caption_title else ""
     return "{}{}".format(caption_title, caption_p)
 
@@ -67,7 +73,12 @@ def process_graphic(node: Element, document_id: str, output_image_dir: str):
         print("Error invalid reference to image")
         return None
     
-    image_path = "{}.jpg".format(graphic_node.get(attribute_keys[0]))
+    graphic_ref = graphic_node.get(attribute_keys[0])
+
+    if(re.search(r".png|.jpg|.gif$", graphic_ref)):
+        image_path = graphic_ref
+    else:
+        image_path = "{}.jpg".format(graphic_ref)
     
     # Move image to output directory
     logging.debug("Moving image with command : mv {}/{} {}/".format(document_id, image_path, output_image_dir))
@@ -118,8 +129,8 @@ def process_document_tar(entry: DirEntry, output_image_dir: str="output/images",
             shutil.rmtree("{}".format(document_id))
         return []
 
-    logging.debug("Extracting image with command : tar -zxf {} --wildcards *.jpg".format(entry.path))
-    res = subprocess.run("tar -zxf {} --wildcards *.jpg".format(entry.path), shell=True)
+    logging.debug("Extracting image with command : tar -zxf {}".format(entry.path))
+    res = subprocess.run("tar -zxf {}".format(entry.path), shell=True)
     if res.returncode != 0:
         print("Error extracting images document id : {}".format(document_id))
 

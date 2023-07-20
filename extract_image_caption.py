@@ -65,6 +65,7 @@ def process_caption(node: Element):
 
 
 def process_graphic(tar_archive: TarFile, node: Element, document_id: str, output_image_dir: str):
+    IMAGE_FILE_EXTENSIONS = [".jpg", ".png", ".gif", ".tif"]
     graphic_node = node.find("./graphic")
 
     attribute_keys = [key for key in list(graphic_node.keys()) if key.endswith("href")]
@@ -75,13 +76,21 @@ def process_graphic(tar_archive: TarFile, node: Element, document_id: str, outpu
     
     graphic_ref = graphic_node.get(attribute_keys[0])
 
-    if(re.search(r".png|.jpg|.gif$", graphic_ref)):
+    image_name = None
+
+    if(re.search(r".png|.jpg|.gif|.tif[f]?$", graphic_ref)):
         image_name = graphic_ref
     else:
-        image_name = "{}.jpg".format(graphic_ref)
+        # Try file extensions
+        archive_files = tar_archive.getnames()
+        for extension in IMAGE_FILE_EXTENSIONS:
+            test_path = "{}/{}{}".format(document_id, graphic_ref, extension)
+            if(test_path in archive_files):
+                image_name = "{}{}".format(graphic_ref, extension)
+                break
     
     image_file = tar_archive.extractfile("{}/{}".format(document_id, image_name))
-
+    
     # Save image to output directory
     with open(f"{output_image_dir}/{image_name}", "wb") as f:
         f.writelines(image_file.readlines())
@@ -113,11 +122,19 @@ def process_node_with_graphic(tar_archive: TarFile, node: Element, document_id: 
 
 def process_document_tar(entry: DirEntry, output_image_dir: str="output/images", remove_dir=True):
     # Open tar file
-    tar_archive = tarfile.open(entry.path, mode="r:gz")
-    logging.debug(entry.path)
+    try:
+        tar_archive = tarfile.open(entry.path, mode="r:gz")
+        logging.debug(entry.path)
+    except:
+        logging.error("Failed to process : {}".format(entry.path))
+        return []
 
     # Get nxml file name
-    nxml_file_names = [file_name for file_name in tar_archive.getnames() if file_name.endswith(".nxml")]
+    try:
+        nxml_file_names = [file_name for file_name in tar_archive.getnames() if file_name.endswith(".nxml")]
+    except:
+        logging.error("Failed to decompress : {}".format(entry.path))
+        return []
     if(len(nxml_file_names) == 0):
         tar_archive.close()
         return []
@@ -149,6 +166,8 @@ def process_document_tar(entry: DirEntry, output_image_dir: str="output/images",
                                              output_image_dir=output_image_dir) for figure in figure_nodes]
     record_list = list(filter(lambda x: x is not None, record_list))
 
+    # Close tarfile
+    tar_archive.close() 
     # Return caption, document id
     return record_list
 
@@ -184,11 +203,11 @@ def extract_all(main_dir: str, output_path: str="processed", remove_temp_dir=Tru
                         format="%(asctime)s %(levelname)s %(message)s")
 
     logging.info("Start process")
-    first_level = extract_directory(main_dir)
+    first_level = sorted(extract_directory(main_dir), key=str)
 
     for first_level_dir in first_level:
         logging.info(f"Processing first level directory : {first_level_dir.path}")
-        for second_level_dir in sorted(extract_directory(first_level_dir.path)):
+        for second_level_dir in sorted(extract_directory(first_level_dir.path), key=str):
             logging.info(f"  Processing second level directory : {second_level_dir.path}")
             start_time = time()
             process_tar_dir(second_level_dir.path,

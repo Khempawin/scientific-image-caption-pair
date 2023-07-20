@@ -75,6 +75,13 @@ def process_graphic(node: Element, document_id: str, output_image_dir: str):
     return image_path
 
 
+def get_image_type(node: Element):
+    if node.tag == "fig":
+        return "figure"
+    else:
+        return "other"
+    
+
 def process_node_with_graphic(node: Element, document_id: str, output_image_dir: str):
     record_dict = dict()
     record_dict["document_id"] = document_id
@@ -86,6 +93,7 @@ def process_node_with_graphic(node: Element, document_id: str, output_image_dir:
         return None
 
     record_dict["image_path"] = image_path
+    record_dict["image_type"] = get_image_type(node)
     return record_dict
 
 

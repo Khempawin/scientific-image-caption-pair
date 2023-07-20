@@ -226,12 +226,6 @@ def extract_all(main_dir: str, output_path: str="processed", n_workers=1, log_le
                         level=log_level,
                         format="%(asctime)s %(levelname)s %(processName)s %(message)s")
     
-    loggerDict = {
-        "filename": output_dir / "log.out",
-        "level": log_level,
-        "format": "%(asctime)s %(levelname)s %(processName)s %(message)s"
-    }
-
     logging.info("Start process")
     first_level = sorted(extract_directory(main_dir), key=str)
 

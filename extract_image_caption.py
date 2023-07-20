@@ -192,9 +192,8 @@ def process_document_tar(entry: DirEntry, output_image_dir: str="output/images",
         return []
 
 
-def process_tar_dir(target_dir:str, output_dir:str, first_level_code:str, second_level_code:str, logger: Logger=None):
-    if logger is None:
-        logger = logging
+def process_tar_dir(target_dir:str, output_dir:str, first_level_code:str, second_level_code:str):
+    logger = logging.getLogger(__name__)
     start_time = time()
     documents = os.scandir(target_dir)
 
@@ -227,7 +226,11 @@ def extract_all(main_dir: str, output_path: str="processed", n_workers=1, log_le
                         level=log_level,
                         format="%(asctime)s %(levelname)s %(processName)s %(message)s")
     
-    logger = logging.getLogger(__name__)
+    loggerDict = {
+        "filename": output_dir / "log.out",
+        "level": log_level,
+        "format": "%(asctime)s %(levelname)s %(processName)s %(message)s"
+    }
 
     logging.info("Start process")
     first_level = sorted(extract_directory(main_dir), key=str)
@@ -240,8 +243,7 @@ def extract_all(main_dir: str, output_path: str="processed", n_workers=1, log_le
                              second_level_dir.path,
                              output_dir.resolve(),
                              first_level_dir.name,
-                             second_level_dir.name,
-                             logger) for second_level_dir in second_level]
+                             second_level_dir.name) for second_level_dir in second_level]
 
 
 def parse_log_level(level: str):

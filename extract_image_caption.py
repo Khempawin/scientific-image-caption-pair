@@ -237,7 +237,7 @@ def process_tar_dir(target_dir:str, output_dir:str, first_level_code:str, second
                         record_list, 
                         sep="|")
     end_time = time()
-    logger.info("  Time for completion of {}/{}: {:.2f} seconds".format(first_level_code, second_level_code, (end_time-start_time)))
+    logger.info("  Time for completion of {}/{}: {:.2f} seconds containing {}".format(first_level_code, second_level_code, (end_time-start_time), len(record_list)))
     return record_list
 
 

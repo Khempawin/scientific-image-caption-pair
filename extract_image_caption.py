@@ -19,7 +19,7 @@ def extract_directory(target_root:str) -> List[DirEntry]:
     return [x for x in os.scandir(target_root) if len(x.name) == 2 and x.is_dir()]
 
 
-def save_records_to_csv(file_path: str, record_list: List[Dict[str, Any]], first_level_code:str, second_level_code:str, sep="|"):
+def save_records_to_csv(file_path: str, record_list: List[Dict[str, Any]], sep="|"):
     if(len(record_list) == 0):
         return
     with open(file_path, "w") as f:
@@ -133,6 +133,8 @@ def process_node_with_graphic(tar_archive: TarFile, node: Element, first_level_c
 
     record_dict["image_path"] = image_path
     record_dict["image_type"] = get_image_type(node)
+    record_dict["first_level_dir"] = first_level_code
+    record_dict["second_level_dir"] = second_level_code
     return record_dict
 
 
@@ -233,8 +235,6 @@ def process_tar_dir(target_dir:str, output_dir:str, first_level_code:str, second
 
     save_records_to_csv(csv_file_path, 
                         record_list, 
-                        first_level_code=first_level_code, 
-                        second_level_code=second_level_code, 
                         sep="|")
     end_time = time()
     logger.info("  Time for completion of {}/{}: {:.2f} seconds".format(first_level_code, second_level_code, (end_time-start_time)))

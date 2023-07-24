@@ -96,7 +96,6 @@ def process_graphic(tar_archive: TarFile, node: Element, first_level_code: str, 
         return None
     
     image_file = tar_archive.extractfile("{}/{}".format(document_id, image_name))
-
     saved_image_name = f"{first_level_code}_{second_level_code}_{document_id}_{image_name}"
     
     # Save image to output directory
@@ -239,8 +238,8 @@ def process_tar_dir(target_dir:str, output_dir:str, first_level_code:str, second
     end_time = time()
     logger.info("  Time for completion of {}/{}: {:.2f} seconds containing {}".format(first_level_code, second_level_code, (end_time-start_time), len(record_list)))
     return record_list
-
-
+  
+  
 def extract_all(main_dir: str, output_path: str="processed", n_workers=1, log_level=logging.INFO, flatten_output_dir=False):
     output_dir = Path(output_path)
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -248,7 +247,7 @@ def extract_all(main_dir: str, output_path: str="processed", n_workers=1, log_le
     logging.basicConfig(filename=output_dir / "log.out",
                         level=log_level,
                         format="%(asctime)s %(levelname)s %(processName)s %(message)s")
-    
+
     logging.info("Start process")
     first_level = sorted(extract_directory(main_dir), key=str)
 

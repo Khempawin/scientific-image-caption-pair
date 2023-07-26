@@ -65,7 +65,7 @@ def process_caption(node: Element):
     return "{}{}".format(caption_title, caption_p)
 
 
-def process_graphic(tar_archive: TarFile, node: Element, first_level_code: str, second_level_code: str, document_id: str, output_image_dir: str, logger: Logger=None):
+def process_graphic(tar_archive: TarFile, node: Element, first_level_code: str, second_level_code: str, document_id: str, output_image_dir: str, logger: Logger=None, omit_image_file: bool=True):
     if logger is None:
         logger = logging
     IMAGE_FILE_EXTENSIONS = [".jpg", ".png", ".gif", ".tif"]
@@ -95,8 +95,12 @@ def process_graphic(tar_archive: TarFile, node: Element, first_level_code: str, 
     if(image_name is None):
         return None
     
-    image_file = tar_archive.extractfile("{}/{}".format(document_id, image_name))
     saved_image_name = f"{first_level_code}_{second_level_code}_{document_id}_{image_name}"
+
+    if(omit_image_file):
+        return saved_image_name
+
+    image_file = tar_archive.extractfile("{}/{}".format(document_id, image_name))
     
     # Save image to output directory
     with open(f"{output_image_dir}/{saved_image_name}", "wb") as f:
@@ -112,7 +116,14 @@ def get_image_type(node: Element):
         return "other"
     
 
-def process_node_with_graphic(tar_archive: TarFile, node: Element, first_level_code: str, second_level_code: str, document_id: str, output_image_dir: str, logger: Logger=None):
+def process_node_with_graphic(tar_archive: TarFile, 
+                              node: Element, 
+                              first_level_code: str, 
+                              second_level_code: str, 
+                              document_id: str, 
+                              output_image_dir: str, 
+                              logger: Logger=None, 
+                              omit_image_file:bool=True):
     if logger is None:
         logger = logging
     record_dict = dict()
@@ -125,7 +136,8 @@ def process_node_with_graphic(tar_archive: TarFile, node: Element, first_level_c
                                  second_level_code=second_level_code,
                                  document_id=document_id, 
                                  output_image_dir=output_image_dir, 
-                                 logger=logger)
+                                 logger=logger,
+                                 omit_image_file=omit_image_file)
 
     if(image_path is None):
         return None
@@ -137,7 +149,12 @@ def process_node_with_graphic(tar_archive: TarFile, node: Element, first_level_c
     return record_dict
 
 
-def process_document_tar(entry: DirEntry, first_level_code:str, second_level_code:str, output_image_dir: str="output/images", logger: Logger=None):
+def process_document_tar(entry: DirEntry, 
+                         first_level_code:str, 
+                         second_level_code:str, 
+                         output_image_dir: str="output/images", 
+                         logger: Logger=None, 
+                         omit_image_file:bool=True):
     if logger is None:
         logger = logging
     # Open tar file
@@ -186,7 +203,8 @@ def process_document_tar(entry: DirEntry, first_level_code:str, second_level_cod
                                                 first_level_code=first_level_code,
                                                 second_level_code=second_level_code,
                                                 document_id=document_id, 
-                                                output_image_dir=output_image_dir) for figure in figure_nodes]
+                                                output_image_dir=output_image_dir,
+                                                omit_image_file=omit_image_file) for figure in figure_nodes]
         record_list = list(filter(lambda x: x is not None, record_list))
         
         # Close tar file
@@ -202,7 +220,12 @@ def process_document_tar(entry: DirEntry, first_level_code:str, second_level_cod
         return []
 
 
-def process_tar_dir(target_dir:str, output_dir:str, first_level_code:str, second_level_code:str, flatten_output_dir=False):
+def process_tar_dir(target_dir:str, 
+                    output_dir:str, 
+                    first_level_code:str, 
+                    second_level_code:str, 
+                    flatten_output_dir=False, 
+                    omit_image_file:bool=True):
     logger = logging.getLogger(__name__)
     start_time = time()
     documents = os.scandir(target_dir)
@@ -227,7 +250,8 @@ def process_tar_dir(target_dir:str, output_dir:str, first_level_code:str, second
         subrecord_list = process_document_tar(doc,
                                               first_level_code=first_level_code,
                                               second_level_code=second_level_code,
-                                              output_image_dir=output_image_dir)
+                                              output_image_dir=output_image_dir,
+                                              omit_image_file=omit_image_file)
         record_list.extend(subrecord_list)
 
     csv_file_path = output_dir_base / f"{first_level_code}_{second_level_code}_captions.csv" if flatten_output_dir else output_dir_base / "captions.csv"
@@ -240,7 +264,12 @@ def process_tar_dir(target_dir:str, output_dir:str, first_level_code:str, second
     return record_list
   
   
-def extract_all(main_dir: str, output_path: str="processed", n_workers=1, log_level=logging.INFO, flatten_output_dir=False):
+def extract_all(main_dir: str, 
+                output_path: str="processed", 
+                n_workers=1, 
+                log_level=logging.INFO, 
+                flatten_output_dir=False, 
+                omit_image_file:bool=True):
     output_dir = Path(output_path)
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -260,7 +289,8 @@ def extract_all(main_dir: str, output_path: str="processed", n_workers=1, log_le
                              output_dir.resolve(),
                              first_level_dir.name,
                              second_level_dir.name,
-                             flatten_output_dir) for second_level_dir in second_level]
+                             flatten_output_dir,
+                             omit_image_file) for second_level_dir in second_level]
 
 
 def parse_log_level(level: str):
@@ -287,17 +317,20 @@ Image-Caption pair extraction from scientific papers
     parser.add_argument("-flatten", "--flatten_second_level", help="flatten second level output directory", default=False)
     parser.add_argument("-n", "--n_workers", help="number of worker processes", default=1)
     parser.add_argument("-l", "--log_level", help="log level [0: debug, 1: info (normal operation)]", default="info")
+    parser.add_argument("--omit_image_file", help="Omit image files [True | False]", default=False)
     arg_list = parser.parse_args()
     main_dir = arg_list.input_dir
     output_path = arg_list.output_dir
     flatten_output_directory = parse_boolean(arg_list.flatten_second_level)
     n_workers = int(arg_list.n_workers)
     log_level = parse_log_level(arg_list.log_level)
+    omit_image_file = parse_boolean(arg_list.omit_image_file)
     extract_all(main_dir=main_dir,
                 output_path=output_path,
                 n_workers=n_workers,
                 log_level=log_level,
-                flatten_output_dir=flatten_output_directory)
+                flatten_output_dir=flatten_output_directory,
+                omit_image_file=omit_image_file)
 
 
 if __name__ == "__main__":

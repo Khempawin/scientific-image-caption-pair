@@ -3,7 +3,7 @@ This script is designed to extract image-caption pairs from a directory containi
 
 # Instructions
 ## 1. Running on local machine
-python3 extract_image_caption.py -i <input_directory> -o <output_directory> -n <number of workers> -l <log level: info | debug> -flatten <flatten output directory or not, should use True>
+python3 extract_image_caption.py -i <input_directory> -o <output_directory> -n <number of workers> -l <log level: info | debug> -flatten <flatten output directory or not, should use True> --omit_image_file <Use to set to output image files or not [True | False]>
 
 ## 2. Submitting to cluster via slurm
 ### 2.1 Edit the script file "run_script.sh"

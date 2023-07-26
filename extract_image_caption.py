@@ -249,6 +249,8 @@ def process_tar_dir(target_dir:str,
     record_list = list()
 
     for doc in list(documents):
+        if(not doc.is_file() or not doc.name.endswith("tar.gz")):
+            continue
         subrecord_list = process_document_tar(doc,
                                               first_level_code=first_level_code,
                                               second_level_code=second_level_code,

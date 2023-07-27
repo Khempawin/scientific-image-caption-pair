@@ -235,15 +235,10 @@ def process_tar_dir(target_dir:str,
     output_dir_suffix = f"{first_level_code}_{second_level_code}"
     output_dir_prefix = output_dir
 
-    if(flatten_output_dir):
-        output_dir_base = Path(f"{output_dir_prefix}/output_{first_level_code}")
-        output_dir_base.mkdir(parents=True, exist_ok=True)
-        output_image_dir = Path(f"{output_dir_prefix}/output_{first_level_code}/{first_level_code}_{second_level_code}_images")
-        output_image_dir.mkdir(parents=True, exist_ok=True)
-    else:
-        output_dir_base = Path(f"{output_dir_prefix}/output_{output_dir_suffix}")
-        output_dir_base.mkdir(parents=True, exist_ok=True)
-        output_image_dir = Path(f"{output_dir_prefix}/output_{output_dir_suffix}/images")
+    output_dir_base = Path(f"{output_dir_prefix}/output_{first_level_code}") if flatten_output_dir else Path(f"{output_dir_prefix}/output_{output_dir_suffix}")
+    output_dir_base.mkdir(parents=True, exist_ok=True)
+    output_image_dir = Path(f"{output_dir_prefix}/output_{first_level_code}/{first_level_code}_{second_level_code}_images") if flatten_output_dir else Path(f"{output_dir_prefix}/output_{output_dir_suffix}/images")
+    if(not omit_image_file):
         output_image_dir.mkdir(parents=True, exist_ok=True)
 
     record_list = list()

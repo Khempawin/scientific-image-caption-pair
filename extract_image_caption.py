@@ -20,22 +20,6 @@ def extract_directory(target_root:str) -> List[DirEntry]:
     return [x for x in os.scandir(target_root) if len(x.name) == 2 and x.is_dir()]
 
 
-def save_records_to_csv(file_path: str, record_list: List[Dict[str, Any]], sep="|"):
-    if(len(record_list) == 0):
-        return
-    with open(file_path, "w") as f:
-        columns = ["id"]
-        columns.extend(list(record_list[0].keys()))
-        # Write headers
-        f.write(sep.join(columns) + "\n")
-        for i, record in enumerate(record_list):
-            values = [str(i)]
-            for k in columns[1:]:
-                values.append(record[k])
-            f.write(sep.join(values) + "\n")
-    return
-
-
 def load_cleaned_xml_from_str(xml_string: str):
     cleaned_text = re.sub(r"<xref[^>]*>[^<]*<\/xref>", "", xml_string)
     cleaned_text = re.sub(r"(<bold[^>]*>|<\/bold>|<italic[^>]*>|<\/italic>|<sub( [^>]*|>)|<\/sub>)", "", cleaned_text)
@@ -253,16 +237,14 @@ def process_tar_dir(target_dir:str,
                                               omit_image_file=omit_image_file)
         record_list.extend(subrecord_list)
 
+    record_df = pd.DataFrame(record_list)
     if(output_caption_file_type == "parquet"):
-        record_df = pd.DataFrame(record_list)
         parquet_path = output_dir_base / f"{first_level_code}_{second_level_code}_captions.parquet.gzip" if flatten_output_dir else output_dir_base / "captions.parquet.gzip"
         record_df.to_parquet(parquet_path, compression="gzip")
     else:
         csv_file_path = output_dir_base / f"{first_level_code}_{second_level_code}_captions.csv" if flatten_output_dir else output_dir_base / "captions.csv"
-
-        save_records_to_csv(csv_file_path, 
-                            record_list, 
-                            sep="|")
+        record_df.to_csv(csv_file_path, sep="|")
+        
     end_time = time()
     logger.info("  Time for completion of {}/{}: {:.2f} seconds containing {}".format(first_level_code, second_level_code, (end_time-start_time), len(record_list)))
     return record_list

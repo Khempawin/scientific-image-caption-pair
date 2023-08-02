@@ -29,7 +29,6 @@ def process_dir(dir: Dict, output_dir: str):
 
 
 def process_partition(dir_list: List[Dict], output_dir: str):
-    return
     for dir in dir_list:
         process_dir(dir, output_dir)
     return

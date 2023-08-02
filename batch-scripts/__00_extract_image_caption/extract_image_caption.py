@@ -306,7 +306,7 @@ Image-Caption pair extraction from scientific papers
     parser.add_argument("-n", "--n_workers", help="number of worker processes", default=1)
     parser.add_argument("-l", "--log_level", help="log level [0: debug, 1: info (normal operation)]", default="info")
     parser.add_argument("--omit_image_file", help="Omit image files [True | False]", default=False)
-    parser.add_argument("--caption_output_type", help="Specify output caption file format [csv | parquet]", default="csv")
+    parser.add_argument("--caption_output_type", help="Specify output caption file format [csv | parquet]", default="parquet")
     arg_list = parser.parse_args()
     main_dir = arg_list.input_dir
     output_path = arg_list.output_dir

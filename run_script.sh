@@ -9,4 +9,4 @@
 module purge
 module load python/3.10.2
 
-python3 extract_image_caption.py -i <input directory> -o <output directory> -n <number of workers> -l <log level: info | debug> -flatten <flatten output directory or not, should use True>
+python3 extract_image_caption.py -i <input directory> -o <output directory> -n <number of workers> -l <log level: info | debug> -flatten <flatten output directory or not, should use True> --omit_image_file <Use to set to output image files or not [True | False]>

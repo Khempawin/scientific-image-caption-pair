@@ -242,9 +242,9 @@ def process_tar_dir(target_dir: str,
     output_dir_suffix = f"{first_level_code}_{second_level_code}"
     output_dir_prefix = output_dir
 
-    output_dir_base = Path(f"{output_dir_prefix}/output_{output_dir_suffix}") if flatten_output_dir else Path(
-        f"{output_dir_prefix}/output_{first_level_code}")
-    output_dir_base.mkdir(parents=True, exist_ok=True)
+    output_dir_caption = Path(f"{output_dir_prefix}/output_{output_dir_suffix}") if flatten_output_dir else Path(
+        f"{output_dir_prefix}/output_{first_level_code}/captions")
+    output_dir_caption.mkdir(parents=True, exist_ok=True)
     output_image_dir = Path(f"{output_dir_prefix}/output_{output_dir_suffix}/images") if flatten_output_dir else Path(
         f"{output_dir_prefix}/output_{first_level_code}/{first_level_code}_{second_level_code}_images")
     if(not omit_image_file):
@@ -264,12 +264,12 @@ def process_tar_dir(target_dir: str,
 
     record_df = pd.DataFrame(record_list)
     if(output_caption_file_type == "parquet"):
-        parquet_path = output_dir_base / \
-            "captions.parquet" if flatten_output_dir else output_dir_base / \
+        parquet_path = output_dir_caption / \
+            "captions.parquet" if flatten_output_dir else output_dir_caption / \
             f"{first_level_code}_{second_level_code}_captions.parquet"
         record_df.to_parquet(parquet_path, compression="gzip")
     else:
-        csv_file_path = output_dir_base / "captions.csv" if flatten_output_dir else output_dir_base / \
+        csv_file_path = output_dir_caption / "captions.csv" if flatten_output_dir else output_dir_caption / \
             f"{first_level_code}_{second_level_code}_captions.csv"
         record_df.to_csv(csv_file_path, sep="|")
 

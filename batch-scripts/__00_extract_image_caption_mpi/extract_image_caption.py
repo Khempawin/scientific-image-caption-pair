@@ -8,7 +8,6 @@ import argparse
 import pandas as pd
 from pathlib import Path
 from time import time
-from concurrent.futures import ProcessPoolExecutor
 from os import DirEntry
 from xml.etree.ElementTree import Element
 from typing import List, TypedDict, Any

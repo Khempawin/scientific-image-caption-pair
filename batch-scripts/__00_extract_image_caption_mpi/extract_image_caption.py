@@ -6,6 +6,7 @@ import xml.etree.ElementTree as ET
 import tarfile
 import argparse
 import pandas as pd
+import concurrent.futures
 from pathlib import Path
 from time import time
 from os import DirEntry
@@ -189,13 +190,13 @@ def process_document_tar(entry: DirEntry,
     logger.debug(nxml_file_name)
     logger.debug("Document id : {}".format(document_id))
 
-    # Extract .nxml file to memory
-    nxml_file = tar_archive.extractfile(nxml_file_name)
-    nxml_content = "".join([line.decode("utf-8")
-                           for line in nxml_file.readlines()])
-
-    # Parse .nxml as cleaned tree
     try:
+        # Extract .nxml file to memory
+        nxml_file = tar_archive.extractfile(nxml_file_name)
+        nxml_content = "".join([line.decode("utf-8")
+                                for line in nxml_file.readlines()])
+
+        # Parse .nxml as cleaned tree
         tree = load_cleaned_xml_from_str(nxml_content)
         record_list = list()
 
@@ -219,6 +220,10 @@ def process_document_tar(entry: DirEntry,
 
         # Return caption, document id
         return record_list
+    except UnicodeDecodeError:
+        logging.error(f"Unicode Decode Error on {document_id}")
+        tar_archive.close()
+        return []
     except:
         logger.error(f"Error parsing xml of {entry.path}")
         # Close tar file
@@ -284,7 +289,7 @@ def configure_logging(process_rank: int, output_path: str, log_level: int):
     output_dir.mkdir(parents=True, exist_ok=True)
 
     # Initialize log file
-    logging.basicConfig(filename=output_dir / "log.out",
+    logging.basicConfig(filename=output_dir / f"log.{process_rank}.out",
                         level=log_level,
                         format="%(asctime)s %(levelname)s %(processName)s %(message)s")
 
@@ -426,16 +431,17 @@ def main():
         dir_list: List[TarDir] = comm.recv(dir_list, source=0, tag=rank)
 
     # Process dir list
-    for dir in dir_list:
-        process_tar_dir(
-            target_dir=dir["dir_path"],
-            output_dir=arg_dict["output_path"],
-            first_level_code=dir["first_level"],
-            second_level_code=dir["second_level"],
-            flatten_output_dir=arg_dict["flatten_output_directory"],
-            omit_image_file=arg_dict["omit_image_file"],
-            output_caption_file_type=arg_dict["output_caption_file_type"]
-        )
+    with concurrent.futures.ProcessPoolExecutor(max_workers=4) as executor:
+        [executor.submit(
+            process_tar_dir,
+            dir["dir_path"],
+            arg_dict["output_path"],
+            dir["first_level"],
+            dir["second_level"],
+            arg_dict["flatten_output_directory"],
+            arg_dict["omit_image_file"],
+            arg_dict["output_caption_file_type"]
+        )for dir in dir_list]
     logging.info(f"End of process {rank}")
 
 

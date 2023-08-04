@@ -368,7 +368,7 @@ def main():
         parser.add_argument("-flatten", "--flatten_second_level",
                             help="flatten second level output directory", default=False)
         parser.add_argument("-n", "--n_workers",
-                            help="number of worker processes", default=1)
+                            help="number of workers per mpi process", default=1)
         parser.add_argument(
             "-l", "--log_level", help="log level [0: debug, 1: info (normal operation)]", default="info")
         parser.add_argument(
@@ -431,7 +431,7 @@ def main():
         dir_list: List[TarDir] = comm.recv(dir_list, source=0, tag=rank)
 
     # Process dir list
-    with concurrent.futures.ProcessPoolExecutor(max_workers=4) as executor:
+    with concurrent.futures.ProcessPoolExecutor(max_workers=arg_dict["n_workers"]) as executor:
         [executor.submit(
             process_tar_dir,
             dir["dir_path"],

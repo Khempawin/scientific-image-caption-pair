@@ -59,7 +59,7 @@ def process_image_record(
     return True
 
 
-def process_dir(dir: Dict, output_dir: str):
+def process_dir(dir: Dict, output_dir: str, image_output: bool=False):
     # Read parquet partition
     df = pd.read_parquet("{}/captions".format(dir["path"]))
     # Compute context validity by pandas apply on each record in partition
@@ -71,7 +71,8 @@ def process_dir(dir: Dict, output_dir: str):
     # Prepare image output directory
     suffix = dir["name"][-2:]
     output_image_path = Path(f"{output_dir}/image_{suffix}")
-    output_image_path.mkdir(parents=True, exist_ok=True)
+    if image_output:
+        output_image_path.mkdir(parents=True, exist_ok=True)
 
     # Copy images to output directory
     df["image_file_exist"] = df.apply(lambda row: process_image_record(
@@ -79,7 +80,8 @@ def process_dir(dir: Dict, output_dir: str):
         first_level_name=suffix,
         first_level_path=dir["path"],
         second_level=row["second_level_dir"],
-        image_path=row["image_path"]
+        image_path=row["image_path"],
+        include_image=image_output
     ), axis=1)
 
     # Save result into parquet output dir
@@ -88,9 +90,9 @@ def process_dir(dir: Dict, output_dir: str):
     return dir["name"]
 
 
-def process_partition(dir_list: List[Dict], output_dir: str):
+def process_partition(dir_list: List[Dict], output_dir: str, image_output: bool=False):
     for dir in dir_list:
-        process_dir(dir, output_dir)
+        process_dir(dir, output_dir, image_output)
     return
 
 
@@ -158,7 +160,7 @@ def main():
         )
 
         # Send output dir to other processes
-        arg_dict = comm.bcast(arg_dict, root=0)
+        arg_dict: ArgDict = comm.bcast(arg_dict, root=0)
 
         # List directories
         dir_list = [{
@@ -172,12 +174,12 @@ def main():
             dir_list, nprocs, partition_boundaries, comm)
 
         # Process self partition
-        process_partition(self_partition, arg_dict["output_dir"])
+        process_partition(self_partition, arg_dict["output_dir"], arg_dict["image_output"])
     else:
         arg_dict = comm.bcast(arg_dict, root=0)
         dir_list = comm.recv(source=0, tag=rank)
         # Process dir_list
-        process_partition(dir_list, arg_dict["output_dir"])
+        process_partition(dir_list, arg_dict["output_dir"], arg_dict["image_output"])
 
 
 if __name__ == "__main__":

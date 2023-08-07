@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #SBATCH --nodes=1
-#SBATCH --ntasks=3
+#SBATCH --ntasks=16
 #SBATCH --partition=atesting
 #SBATCH --cpus-per-task=1
 #SBATCH --job-name=mpi-test
@@ -18,7 +18,7 @@ export SLURM_EXPORT_ENV=ALL
 # Activate virtual env if necessary
 # . /path/to/venv/bin/activate
 
-mpirun -n 16 python compute_context_length.py --input_dir <directory containing parquet files> --output_dir <output base directory>
+mpirun -n $SLURM_NTASKS python compute_context_length.py --input_dir <directory containing parquet files> --output_dir <output base directory> --image_out False
 
 # deactivate virtual environment if necessary
 # deactivate

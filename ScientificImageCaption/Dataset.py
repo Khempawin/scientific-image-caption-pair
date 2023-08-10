@@ -1,5 +1,6 @@
 import torch
 import pandas as pd
+import dask.dataframe as dd
 from PIL import Image, ImageFile
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 from torch.utils.data import Dataset
@@ -35,23 +36,30 @@ class ScientificImageCaptionDataset(Dataset):
     def __len__(self) -> int:
         return self.manifest.shape[0]
     
-    def check_img_exists(self, record) -> bool:
+    def has_valid_image_file(self, record) -> bool:
+        # check if image exists
         image_path = Path(self.get_full_path(record["image_path"], record["first_level_dir"]))
-        return image_path.is_file()
+        if not image_path.is_file():
+            return False
+        # check if image file can be opened
+        try:
+            self.load_image(image_path)
+            return True
+        except:
+            return False
     
     def load_manifest(self, parquet_file_path: str):
-        manifest = pd.read_parquet(parquet_file_path, engine="pyarrow")
-        image_ready = manifest.apply(lambda record: self.check_img_exists(record), axis=1) 
-        return manifest[image_ready]
+        manifest = dd.read_parquet(parquet_file_path, engine="pyarrow")
+        image_ready = manifest.apply(lambda record: self.has_valid_image_file(record), axis=1, meta=(None, 'bool')) 
+        return manifest[image_ready].compute()
     
-    def load_image(self, index: int) -> Image.Image:
+    def load_image(self, image_path: str) -> Image.Image | None:
         """Opens an image via a path and returns it."""
-        record = self.manifest.iloc[index]
-        image_path = self.get_full_path(
-            image_path=record["image_path"], 
-            first_level_dir=record["first_level_dir"]
-        )
-        return Image.open(image_path).convert("RGB")
+        try:
+            image = Image.open(image_path).convert("RGB") 
+            return image
+        except:
+            return None 
     
     def get_field(self, index: int, field_name: str) -> str:
         record = self.manifest.iloc[index]

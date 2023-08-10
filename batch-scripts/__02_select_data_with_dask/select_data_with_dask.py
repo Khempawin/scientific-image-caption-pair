@@ -1,7 +1,7 @@
 import dask.dataframe as dd
 import argparse
-import shutil
 from pathlib import Path
+from PIL import Image
 
 
 def get_image_path(
@@ -24,11 +24,20 @@ def process_image_record(row, base_path: str, output_path: str, include_image: b
     if not src_path.is_file():
         return False
 
-    # Prepare image output directory
-    if include_image:
-        output_image_path = Path(f"{output_path}/image_{row['first_level_dir']}")
-        output_image_path.mkdir(parents=True, exist_ok=True)
-        shutil.copy(src=src_path, dst=f"{output_image_path}/{row['image_path']}")
+    # verify image file by opening
+    try:
+        # open image file
+        image = Image.open(src_path).convert("RGB")
+        # Prepare image output directory
+        if include_image:
+            output_image_path = Path(f"{output_path}/image_{row['first_level_dir']}")
+            output_image_path.mkdir(parents=True, exist_ok=True)
+            # save image file
+            image.save(f"{output_image_path}/{row['image_path']}")
+        image.close()
+    except:
+        return False
+        
     return True
 
 
@@ -79,7 +88,7 @@ def main():
     selected = records.query(
         "fit_context == 77 and image_file_exist == True and image_type == 'figure'")
 
-    selected["image_copied"] = selected.apply(lambda row: process_image_record(row, img_dir, output_path, image_output), meta=(None, bool), axis=1)
+    selected["image_valid"] = selected.apply(lambda row: process_image_record(row, img_dir, output_path, image_output), meta=(None, bool), axis=1)
 
     selected.compute().to_parquet(output_path / "captions",
                                   engine="pyarrow", partition_cols="first_level_dir")

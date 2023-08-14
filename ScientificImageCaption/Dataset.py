@@ -28,10 +28,11 @@ class ScientificImageCaptionDataset(Dataset):
     def __init__(self, 
                  parquet_file_path: str, 
                  image_root_dir: str, 
-                 transform=None):
+                 transform=None,
+                 verify_image_file: bool=False):
         self.image_root_dir = image_root_dir
         self.transform = transform
-        self.manifest = self.load_manifest(parquet_file_path)
+        self.manifest = self.load_manifest(parquet_file_path, verify_image_file)
 
     def __len__(self) -> int:
         return self.manifest.shape[0]
@@ -42,16 +43,17 @@ class ScientificImageCaptionDataset(Dataset):
         if not image_path.is_file():
             return False
         # check if image file can be opened
-        try:
-            self.load_image(image_path)
+        if(self.load_image(image_path)):
             return True
-        except:
+        else:
             return False
     
-    def load_manifest(self, parquet_file_path: str):
-        manifest = dd.read_parquet(parquet_file_path, engine="pyarrow")
-        image_ready = manifest.apply(lambda record: self.has_valid_image_file(record), axis=1, meta=(None, 'bool')) 
-        return manifest[image_ready].compute()
+    def load_manifest(self, parquet_file_path: str, verify_image_file: bool=False):
+        manifest = pd.read_parquet(parquet_file_path, engine="pyarrow")
+        if(verify_image_file):
+            image_ready = manifest.apply(lambda record: self.has_valid_image_file(record), axis=1) 
+            return manifest[image_ready]
+        return manifest
     
     def load_image(self, image_path: str) -> Image.Image | None:
         """Opens an image via a path and returns it."""
@@ -76,13 +78,15 @@ class ScientificImageCaptionDataset(Dataset):
                 image_path=record["image_path"], 
                 first_level_dir=record["first_level_dir"]
             )
-            image = self.load_image(index)
+            image = self.load_image(image_path).convert("RGB")
         except:
             raise Exception(f"Error read image path : {image_path}")
         caption = self.get_field(index, "caption")
         document_id = self.get_field(index, "document_id")
+        first_level = self.get_field(index, "first_level_dir")
+        second_level = self.get_field(index, "second_level_dir")
 
         image = self.transform(image) if self.transform else image
 
-        return (image, caption, document_id)
+        return (image, caption, document_id, first_level, second_level)
     

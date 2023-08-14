@@ -16,4 +16,7 @@ def collate_batch(batch):
                 list_of_attributes[i] = torch.stack(attribute_list)
         return list_of_attributes
     else:
-        return default_collate(batch)
+        try:
+            return default_collate(batch)
+        except:
+            print(batch)

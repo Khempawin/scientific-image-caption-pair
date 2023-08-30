@@ -18,7 +18,7 @@ module load python/3.10.2
 # Activate virtual env if necessary
 # . /path/to/venv/bin/activate
 
-python select_data_with_dask.py -i <directory containing parquet data files> -o <directory to save output parquet files>
+python select_data_with_dask.py -s0 <output directory of stage00> -s1 <output directory of stage01> -o <directory to save output parquet files + image files> -img <copy images from stage00 or not>
 
 # deactivate virtual environment if necessary
 # deactivate

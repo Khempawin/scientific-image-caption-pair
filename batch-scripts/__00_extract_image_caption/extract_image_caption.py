@@ -205,13 +205,13 @@ def process_document_tar(entry: DirEntry,
         return []
 
 
-def process_tar_dir(target_dir:str, 
-                    output_dir:str, 
-                    first_level_code:str, 
-                    second_level_code:str, 
-                    flatten_output_dir=False, 
-                    omit_image_file:bool=True,
-                    output_caption_file_type: str="csv"):
+def process_tar_dir(target_dir: str,
+                    output_dir: str,
+                    first_level_code: str,
+                    second_level_code: str,
+                    flatten_output_dir=False,
+                    omit_image_file: bool = True,
+                    output_caption_file_type: str = "parquet"):
     logger = logging.getLogger(__name__)
     start_time = time()
     documents = os.scandir(target_dir)
@@ -219,9 +219,11 @@ def process_tar_dir(target_dir:str,
     output_dir_suffix = f"{first_level_code}_{second_level_code}"
     output_dir_prefix = output_dir
 
-    output_dir_base = Path(f"{output_dir_prefix}/output_{first_level_code}") if flatten_output_dir else Path(f"{output_dir_prefix}/output_{output_dir_suffix}")
+    output_dir_base = Path(f"{output_dir_prefix}/output_{output_dir_suffix}") if flatten_output_dir else Path(
+        f"{output_dir_prefix}/output_{first_level_code}")
     output_dir_base.mkdir(parents=True, exist_ok=True)
-    output_image_dir = Path(f"{output_dir_prefix}/output_{first_level_code}/{first_level_code}_{second_level_code}_images") if flatten_output_dir else Path(f"{output_dir_prefix}/output_{output_dir_suffix}/images")
+    output_image_dir = Path(f"{output_dir_prefix}/output_{output_dir_suffix}/images") if flatten_output_dir else Path(
+        f"{output_dir_prefix}/output_{first_level_code}/{first_level_code}_{second_level_code}_images")
     if(not omit_image_file):
         output_image_dir.mkdir(parents=True, exist_ok=True)
 
@@ -239,14 +241,18 @@ def process_tar_dir(target_dir:str,
 
     record_df = pd.DataFrame(record_list)
     if(output_caption_file_type == "parquet"):
-        parquet_path = output_dir_base / f"{first_level_code}_{second_level_code}_captions.parquet.gzip" if flatten_output_dir else output_dir_base / "captions.parquet.gzip"
+        parquet_path = output_dir_base / \
+            "captions.parquet" if flatten_output_dir else output_dir_base / \
+            f"{first_level_code}_{second_level_code}_captions.parquet"
         record_df.to_parquet(parquet_path, compression="gzip")
     else:
-        csv_file_path = output_dir_base / f"{first_level_code}_{second_level_code}_captions.csv" if flatten_output_dir else output_dir_base / "captions.csv"
+        csv_file_path = output_dir_base / "captions.csv" if flatten_output_dir else output_dir_base / \
+            f"{first_level_code}_{second_level_code}_captions.csv"
         record_df.to_csv(csv_file_path, sep="|")
-        
+
     end_time = time()
-    logger.info("  Time for completion of {}/{}: {:.2f} seconds containing {}".format(first_level_code, second_level_code, (end_time-start_time), len(record_list)))
+    logger.info("  Time for completion of {}/{}: {:.2f} seconds containing {}".format(
+        first_level_code, second_level_code, (end_time-start_time), len(record_list)))
     return record_list
   
   

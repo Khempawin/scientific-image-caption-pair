@@ -70,7 +70,7 @@ class ScientificImageCaptionDataset(Dataset):
         second_level = self.get_field(index, "second_level_dir")
 
         if(not self.use_image):
-            return (image, caption, document_id, first_level, second_level)
+            return (caption, document_id, first_level, second_level)
     
         try:
             image_path = self.get_full_path(

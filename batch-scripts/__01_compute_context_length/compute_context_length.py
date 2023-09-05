@@ -1,12 +1,11 @@
 from mpi4py import MPI
 import os
 import pandas as pd
-import clip
 import argparse
 from typing import Dict, List, TypedDict
 from pathlib import Path
 import shutil
-
+from transformers import AutoTokenizer
 
 class ArgDict(TypedDict):
     input_dir: str
@@ -14,14 +13,12 @@ class ArgDict(TypedDict):
     image_output: bool
 
 
+TOKENIZER = AutoTokenizer.from_pretrained("openai/clip-vit-base-patch32")
+
+
 def tokenize(text):
-    context_length = 77
-    while(True):
-        try:
-            clip.tokenize(text, context_length=context_length)
-            return context_length
-        except:
-            context_length += 8
+    output = TOKENIZER([text], return_tensors="pt")
+    return output["input_ids"].shape[1]
 
 
 def get_image_path(

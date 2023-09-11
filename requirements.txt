@@ -3,7 +3,7 @@ charset-normalizer==2.1.1
 click==8.1.6
 cloudpickle==2.2.1
 cmake==3.25.0
-dask==2023.7.1
+dask>=2023.7.1
 filelock==3.9.0
 fsspec==2023.6.0
 idna==3.4

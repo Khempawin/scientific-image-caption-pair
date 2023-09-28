@@ -14,9 +14,9 @@ python3 extract_image_caption.py -i <input_directory> -o <output_directory> -n <
 # Installing and Preparation
 ## Conda (preferred)
 - Create virtual environment  
-<code>conda create -p <input placeholder="path to directory" readonly/> python=3.11 </code>
+<code>conda create -p `<path to directory>` python=3.11 </code>
 - Activate virtual environment  
-<code>conda activate <input placeholder="path to directory" readonly/></code>
+<code>conda activate `<path to directory`></code>
 
 - Install Pytorch (https://pytorch.org/get-started/locally/)  
 <code>conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia</code>

@@ -26,6 +26,8 @@ python3 extract_image_caption.py -i <input_directory> -o <output_directory> -n <
 <code>conda install mpi4py</code>
 - Install clip package  or  clip huggingface  
 <code>conda install -c huggingface transformers</code>
+- Install other dependencies
+<code>conda install accelerate -c conda-forge</code>
 - Install ScientificImageCaption Package  
 <code>pip install git+https://github.com/Khempawin/scientific-image-caption-pair.git</code>
 

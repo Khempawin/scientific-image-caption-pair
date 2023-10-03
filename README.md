@@ -26,12 +26,15 @@ python3 extract_image_caption.py -i <input_directory> -o <output_directory> -n <
 <code>conda install mpi4py</code>
 - Install clip package  or  clip huggingface  
 <code>conda install -c huggingface transformers</code>
-- Install other dependencies
-<code>conda install accelerate -c conda-forge</code>
+- Install faiss package for nearest neighbor search   
+<code>conda install -c conda-forge faiss</code>   
+- Install other dependencies  
+<code>conda install scikit-learn accelerate -c conda-forge</code>
 - Install ScientificImageCaption Package  
-<code>pip install git+https://github.com/Khempawin/scientific-image-caption-pair.git</code>
+<code>pip install git+https://github.com/Khempawin/scientific-image-caption-pair.git</code>  
 
-
+- Dev interactive  
+<code>conda install tqdm jupyter ipywidgets ipython</code>
 
 ## Python venv (Incomplete)
 - Create virtual environment  

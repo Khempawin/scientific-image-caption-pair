@@ -9,6 +9,7 @@ from transformers import (
     AutoImageProcessor,
 )
 from PIL import Image
+from typing import Tuple
 import numpy as np
 import torch
 
@@ -20,6 +21,14 @@ DUMMY_TEXT = "sample"
 
 def get_full_image_path(row, image_root_dir: Path):
     return image_root_dir / f"image_{row['first_level_dir']}" / row["image_path"]
+
+
+def load_image(image_path:str) -> Tuple[bool, Image.Image]:
+    try:
+        image = Image.open(image_path).convert("RGB")
+        return True, image
+    except:
+        return False, DUMMY_IMAGE
 
 
 def parse_boolean(value: str):
@@ -80,9 +89,6 @@ def main():
 
     model = model.to(device)
 
-    # Determine full path
-    records["full_img_path"] = records.apply(lambda row: str(image_root_dir / row["image_path"]), axis=1)
-
     # Get original index
     records["original_index"] = range(records.shape[0])
 
@@ -95,13 +101,16 @@ def main():
     # Initialize encoded lists
     encoded_caption_list = list()
     encoded_image_list = list()
+    load_status_list = list()
 
     # Process each batch
     for batch in batches:
         image_list = list()
         # Load images
         for i in batch:
-            image_list.append(Image.open(get_full_image_path(records.iloc[i], image_root_dir)).convert("RGB"))
+            success, image = load_image(get_full_image_path(records.iloc[i], image_root_dir))
+            load_status_list.append(success)
+            image_list.append(image)
         # Select captions for batch
         caption_list = list(records.iloc[batch[0]:batch[-1]+1]["caption"])
         # Encode image and caption
@@ -117,9 +126,12 @@ def main():
     # Assign encoded results to original dataframe
     records["encoded_caption"] = encoded_caption_list
     records["encoded_image"] = encoded_image_list
+    records["load_status"] = load_status_list
 
     # Save dataframe to parquet file
-    records.to_parquet(output_path / "encoded_caption.parquet", engine="pyarrow")
+    valid_records = records[records["load_status"] == True]
+    print("Processed records : {} | Valid records : {}".format(records.shape[0], valid_records.shape[0]))
+    valid_records.to_parquet(output_path / "encoded_caption.parquet", engine="pyarrow")
 
 
 if __name__ == "__main__":

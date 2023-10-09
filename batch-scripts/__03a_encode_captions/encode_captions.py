@@ -153,7 +153,7 @@ def main():
     for first_level_dir in first_level_dir_list:
         start_time = time.time()
         encode_section(
-            records[records["first_level_dir"] == first_level_dir],
+            records[records["first_level_dir"] == first_level_dir].copy(),
             first_level_dir,
             model,
             processor,

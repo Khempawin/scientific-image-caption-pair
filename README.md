@@ -14,9 +14,9 @@ python3 extract_image_caption.py -i <input_directory> -o <output_directory> -n <
 # Installing and Preparation
 ## Conda (preferred)
 - Create virtual environment  
-<code>conda create -p <input placeholder="path to directory" readonly/> python=3.11 </code>
+<code>conda create -p `<path to directory>` python=3.11 </code>
 - Activate virtual environment  
-<code>conda activate <input placeholder="path to directory" readonly/></code>
+<code>conda activate `<path to directory`></code>
 
 - Install Pytorch (https://pytorch.org/get-started/locally/)  
 <code>conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia</code>
@@ -26,12 +26,15 @@ python3 extract_image_caption.py -i <input_directory> -o <output_directory> -n <
 <code>conda install mpi4py</code>
 - Install clip package  or  clip huggingface  
 <code>conda install -c huggingface transformers</code>
-- Install other dependencies
-<code>conda install accelerate -c conda-forge</code>
+- Install faiss package for nearest neighbor search   
+<code>conda install -c conda-forge faiss</code>   
+- Install other dependencies  
+<code>conda install scikit-learn accelerate -c conda-forge</code>
 - Install ScientificImageCaption Package  
-<code>pip install git+https://github.com/Khempawin/scientific-image-caption-pair.git</code>
+<code>pip install git+https://github.com/Khempawin/scientific-image-caption-pair.git</code>  
 
-
+- Dev interactive  
+<code>conda install tqdm jupyter ipywidgets ipython</code>
 
 ## Python venv (Incomplete)
 - Create virtual environment  

@@ -102,6 +102,7 @@ def get_image_type(node: Element):
     
 
 def process_node_with_graphic(tar_archive: TarFile, 
+                              section: str,
                               node: Element, 
                               first_level_code: str, 
                               second_level_code: str, 
@@ -114,6 +115,10 @@ def process_node_with_graphic(tar_archive: TarFile,
     record_dict = dict()
     record_dict["document_id"] = document_id
     record_dict["caption"] = process_caption(node)
+    record_dict["section"] = section
+
+    if(len(record_dict["caption"]) == 0):
+        return None
 
     image_path = process_graphic(tar_archive, 
                                  node, 
@@ -132,6 +137,14 @@ def process_node_with_graphic(tar_archive: TarFile,
     record_dict["first_level_dir"] = first_level_code
     record_dict["second_level_dir"] = second_level_code
     return record_dict
+
+
+def is_section_node(node: Element):
+    return node.tag == "sec"
+
+
+def get_section_title(section_node: Element):
+    return section_node.find("title").text
 
 
 def process_document_tar(entry: DirEntry, 
@@ -177,14 +190,26 @@ def process_document_tar(entry: DirEntry,
         tree = load_cleaned_xml_from_str(nxml_content)
         record_list = list()
 
-        # Extract image(figure) file names and captions from tree
-        figure_nodes = [node for node in tree.iter() if node_has_graphic(node)]
+        # Extract section nodes from tree
+        body_node = tree.find("body")
+        section_nodes = [node for node in body_node.findall("sec")]
+        figure_nodes = list()
+        for section_node in section_nodes:
+            section_title = get_section_title(section_node)
+            # print(section_title)
+            sub_figure_nodes = [{"node": node, "section": section_title} for node in section_node.iter() if node_has_graphic(node)]
+            figure_nodes.extend(sub_figure_nodes)
+        # print(nxml_file_name, len(figure_nodes))
+        # for figure_dict in figure_nodes:
+        #     print(f"{figure_dict.get('section')} : {figure_dict.get('node')}")
+        # print("", end="\n\n")
 
         if len(figure_nodes) == 0:
             return []
 
         record_list = [process_node_with_graphic(tar_archive=tar_archive,
-                                                node=figure, 
+                                                 section=figure.get("section"),
+                                                node=figure.get("node"), 
                                                 first_level_code=first_level_code,
                                                 second_level_code=second_level_code,
                                                 document_id=document_id, 

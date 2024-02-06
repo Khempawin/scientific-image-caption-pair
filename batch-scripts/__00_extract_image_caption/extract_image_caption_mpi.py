@@ -42,6 +42,7 @@ class GraphicDict(TypedDict):
     image_type: str
     first_level_dir: str
     second_level_dir: str
+    section: str
     journal_name: Optional[str]
     article_title: Optional[str]
     subjects: Optional[List[str]]
@@ -148,6 +149,7 @@ def process_node_with_graphic(tar_archive: TarFile,
                               first_level_code: str,
                               second_level_code: str,
                               document_id: str,
+                              section: str,
                               journal_name: str=None,
                               article_title: str=None,
                               subjects: List[str]=None,
@@ -157,6 +159,7 @@ def process_node_with_graphic(tar_archive: TarFile,
                               omit_image_file: bool = True) -> GraphicDict:
     if logger is None:
         logger = logging
+    logger.debug("Start node with graphic")
     record_dict = GraphicDict()
     record_dict["document_id"] = document_id
     record_dict["caption"] = process_caption(node)
@@ -177,6 +180,7 @@ def process_node_with_graphic(tar_archive: TarFile,
     record_dict["image_type"] = get_image_type(node)
     record_dict["first_level_dir"] = first_level_code
     record_dict["second_level_dir"] = second_level_code
+    record_dict["section"] = section
     record_dict["journal_name"] = journal_name
     record_dict["article_title"] = article_title
     record_dict["subjects"] = subjects
@@ -252,23 +256,33 @@ def process_document_tar(entry: DirEntry,
         authors = ["{} {}".format(name.find("given-names").text, name.find("surname").text) for name in authors]
 
 
-        # Extract image(figure) file names and captions from tree
-        figure_nodes = [node for node in tree.iter() if node_has_graphic(node)]
+        # Extract section nodes from tree
+        body_node = tree.find("body")
+        section_nodes = [node for node in body_node.findall("sec")]
+        figure_nodes = list()
+        for section_node in section_nodes:
+            section_title = get_section_title(section_node)
+            sub_figure_nodes = [{"node": node, "section": section_title} for node in section_node.iter() if node_has_graphic(node)]
+            figure_nodes.extend(sub_figure_nodes)
 
         if len(figure_nodes) == 0:
             return []
 
+        logger.debug("Got nodes")
+        
         record_list = [process_node_with_graphic(tar_archive=tar_archive,
-                                                 node=figure,
+                                                 node=figure["node"],
                                                  first_level_code=first_level_code,
                                                  second_level_code=second_level_code,
                                                  document_id=document_id,
+                                                 section=figure["section"],
                                                  journal_name=journal_name,
                                                  article_title=article_title,
                                                  subjects=subjects,
                                                  authors=authors,
                                                  output_image_zip=output_image_zip,
                                                  omit_image_file=omit_image_file) for figure in figure_nodes]
+        logger.debug("\tDone")
         record_list = list(filter(lambda x: x is not None, record_list))
 
         # Close tar file
@@ -281,7 +295,7 @@ def process_document_tar(entry: DirEntry,
         tar_archive.close()
         return []
     except:
-        logger.error(f"Error parsing xml of {entry.path}")
+        logger.error(f"Error parsing xml of {entry.path}", exc_info=True)
         # Close tar file
         tar_archive.close()
         # Return caption, document id

@@ -11,7 +11,7 @@ from pathlib import Path
 from time import time
 from os import DirEntry
 from xml.etree.ElementTree import Element
-from typing import List, TypedDict, Any
+from typing import List, TypedDict, Any, Optional
 from tarfile import TarFile
 from logging import Logger
 from mpi4py import MPI
@@ -35,6 +35,19 @@ class TarDir(TypedDict):
     second_level: str
 
 
+class GraphicDict(TypedDict):
+    document_id: str
+    caption: str
+    image_path: Optional[str]
+    image_type: str
+    first_level_dir: str
+    second_level_dir: str
+    journal_name: Optional[str]
+    article_title: Optional[str]
+    subjects: Optional[List[str]]
+    authors: Optional[List[str]]
+
+
 def extract_directory(target_root: str) -> List[DirEntry]:
     return [x for x in os.scandir(target_root) if len(x.name) == 2 and x.is_dir()]
 
@@ -54,7 +67,7 @@ def node_has_graphic(node: Element):
     return "graphic" in children_tag_set
 
 
-def process_caption(node: Element):
+def process_caption(node: Element) -> str:
     # Find caption node
     caption_node = node.find("./caption")
 
@@ -135,12 +148,16 @@ def process_node_with_graphic(tar_archive: TarFile,
                               first_level_code: str,
                               second_level_code: str,
                               document_id: str,
+                              journal_name: str=None,
+                              article_title: str=None,
+                              subjects: List[str]=None,
+                              authors: List[str]=None,
                               output_image_zip: ZipFile=None,
                               logger: Logger = None,
-                              omit_image_file: bool = True):
+                              omit_image_file: bool = True) -> GraphicDict:
     if logger is None:
         logger = logging
-    record_dict = dict()
+    record_dict = GraphicDict()
     record_dict["document_id"] = document_id
     record_dict["caption"] = process_caption(node)
 
@@ -160,6 +177,10 @@ def process_node_with_graphic(tar_archive: TarFile,
     record_dict["image_type"] = get_image_type(node)
     record_dict["first_level_dir"] = first_level_code
     record_dict["second_level_dir"] = second_level_code
+    record_dict["journal_name"] = journal_name
+    record_dict["article_title"] = article_title
+    record_dict["subjects"] = subjects
+    record_dict["authors"] = authors
     return record_dict
 
 
@@ -216,6 +237,21 @@ def process_document_tar(entry: DirEntry,
         tree = load_cleaned_xml_from_str(nxml_content)
         record_list = list()
 
+        # Extract article metadata
+        meta_data_node = [node for node in tree.iter() if node.tag == "article-meta" or node.tag == "journal-meta"]
+        journal_meta_node = [node for node in meta_data_node if node.tag == "journal-meta"][0]
+        article_meta_node = [node for node in meta_data_node if node.tag == "article-meta"][0]
+        journal_meta_children = [node for node in journal_meta_node.iter()]
+        article_meta_children = [node for node in article_meta_node.iter()]
+        journal_name = [node.text for node in journal_meta_children if node.tag == "journal-title"]
+        subjects = [node.text for node in article_meta_children if node.tag == "subject"]
+        article_title = [node.text for node in article_meta_children if node.tag == "article-title"][0]
+        
+        authors = [node for node in article_meta_children if node.tag == "contrib"]
+        authors = [name.find("name") for name in authors]
+        authors = ["{} {}".format(name.find("given-names").text, name.find("surname").text) for name in authors]
+
+
         # Extract image(figure) file names and captions from tree
         figure_nodes = [node for node in tree.iter() if node_has_graphic(node)]
 
@@ -227,6 +263,10 @@ def process_document_tar(entry: DirEntry,
                                                  first_level_code=first_level_code,
                                                  second_level_code=second_level_code,
                                                  document_id=document_id,
+                                                 journal_name=journal_name,
+                                                 article_title=article_title,
+                                                 subjects=subjects,
+                                                 authors=authors,
                                                  output_image_zip=output_image_zip,
                                                  omit_image_file=omit_image_file) for figure in figure_nodes]
         record_list = list(filter(lambda x: x is not None, record_list))

@@ -132,7 +132,8 @@ def process_graphic(
         "{}/{}".format(document_id, image_name))
 
     # Save image to output zip
-    output_image_zip.writestr(saved_image_name, image_file.read())
+    if(saved_image_name not in output_image_zip.namelist()):
+        output_image_zip.writestr(saved_image_name, image_file.read())
 
     return saved_image_name
 
@@ -193,7 +194,7 @@ def is_section_node(node: Element):
 
 
 def get_section_title(section_node: Element):
-    return section_node.find("title").text
+    return section_node.find("title").text if section_node is not None else ""
 
 
 def process_document_tar(entry: DirEntry,
@@ -253,7 +254,7 @@ def process_document_tar(entry: DirEntry,
         
         authors = [node for node in article_meta_children if node.tag == "contrib"]
         authors = [name.find("name") for name in authors]
-        authors = ["{} {}".format(name.find("given-names").text, name.find("surname").text) for name in authors]
+        authors = ["{} {}".format(name.find("given-names").text, name.find("surname").text) for name in authors if name is not None]
 
 
         # Extract section nodes from tree

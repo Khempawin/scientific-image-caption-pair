@@ -1,0 +1,269 @@
+{
+    "training": true,
+    "_parameters": OrderedDict([("logit_scale", Parameter containing:
+tensor(2.6592, requires_grad=true))
+    ]),
+    "_buffers": OrderedDict(),
+    "_non_persistent_buffers_set": set(),
+    "_backward_pre_hooks": OrderedDict(),
+    "_backward_hooks": OrderedDict(),
+    "_is_full_backward_hook": None,
+    "_forward_hooks": OrderedDict(),
+    "_forward_hooks_with_kwargs": OrderedDict(),
+    "_forward_hooks_always_called": OrderedDict(),
+    "_forward_pre_hooks": OrderedDict(),
+    "_forward_pre_hooks_with_kwargs": OrderedDict(),
+    "_state_dict_hooks": OrderedDict(),
+    "_state_dict_pre_hooks": OrderedDict(),
+    "_load_state_dict_pre_hooks": OrderedDict(),
+    "_load_state_dict_post_hooks": OrderedDict(),
+    "_modules": OrderedDict([("vision_model", CLIPVisionModel(
+  (vision_model): CLIPVisionTransformer(
+    (embeddings): CLIPVisionEmbeddings(
+      (patch_embedding): Conv2d(3,
+        768, kernel_size=(32,
+        32), stride=(32,
+        32), bias=False)
+      (position_embedding): Embedding(50,
+        768)
+    )
+    (pre_layrnorm): LayerNorm((768,), eps=1e-05, elementwise_affine=true)
+    (encoder): CLIPEncoder(
+      (layers): ModuleList(
+        (0-11): 12 x CLIPEncoderLayer(
+          (self_attn): CLIPAttention(
+            (k_proj): Linear(in_features=768, out_features=768, bias=true)
+            (v_proj): Linear(in_features=768, out_features=768, bias=true)
+            (q_proj): Linear(in_features=768, out_features=768, bias=true)
+            (out_proj): Linear(in_features=768, out_features=768, bias=true)
+          )
+          (layer_norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=true)
+          (mlp): CLIPMLP(
+            (activation_fn): QuickGELUActivation()
+            (fc1): Linear(in_features=768, out_features=3072, bias=true)
+            (fc2): Linear(in_features=3072, out_features=768, bias=true)
+          )
+          (layer_norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=true)
+        )
+      )
+    )
+    (post_layernorm): LayerNorm((768,), eps=1e-05, elementwise_affine=true)
+  )
+)), ("text_model", RobertaModel(
+  (embeddings): RobertaEmbeddings(
+    (word_embeddings): Embedding(50265,
+        768, padding_idx=1)
+    (position_embeddings): Embedding(514,
+        768, padding_idx=1)
+    (token_type_embeddings): Embedding(1,
+        768)
+    (LayerNorm): LayerNorm((768,), eps=1e-05, elementwise_affine=true)
+    (dropout): Dropout(p=0.1, inplace=False)
+  )
+  (encoder): RobertaEncoder(
+    (layer): ModuleList(
+      (0-11): 12 x RobertaLayer(
+        (attention): RobertaAttention(
+          (self): RobertaSelfAttention(
+            (query): Linear(in_features=768, out_features=768, bias=true)
+            (key): Linear(in_features=768, out_features=768, bias=true)
+            (value): Linear(in_features=768, out_features=768, bias=true)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (output): RobertaSelfOutput(
+            (dense): Linear(in_features=768, out_features=768, bias=true)
+            (LayerNorm): LayerNorm((768,), eps=1e-05, elementwise_affine=true)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+        (intermediate): RobertaIntermediate(
+          (dense): Linear(in_features=768, out_features=3072, bias=true)
+          (intermediate_act_fn): GELUActivation()
+        )
+        (output): RobertaOutput(
+          (dense): Linear(in_features=3072, out_features=768, bias=true)
+          (LayerNorm): LayerNorm((768,), eps=1e-05, elementwise_affine=true)
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+      )
+    )
+  )
+  (pooler): RobertaPooler(
+    (dense): Linear(in_features=768, out_features=768, bias=true)
+    (activation): Tanh()
+  )
+)), ("visual_projection", Linear(in_features=768, out_features=512, bias=False)), ("text_projection", Linear(in_features=768, out_features=512, bias=False))
+    ]),
+    "config": VisionTextDualEncoderConfig {
+        "_commit_hash": null,
+        "logit_scale_init_value": 2.6592,
+        "model_type": "vision-text-dual-encoder",
+        "projection_dim": 512,
+        "text_config": {
+            "_name_or_path": "roberta-base",
+            "add_cross_attention": false,
+            "architectures": [
+                "RobertaForMaskedLM"
+            ],
+            "attention_probs_dropout_prob": 0.1,
+            "bad_words_ids": null,
+            "begin_suppress_tokens": null,
+            "bos_token_id": 0,
+            "chunk_size_feed_forward": 0,
+            "classifier_dropout": null,
+            "cross_attention_hidden_size": null,
+            "decoder_start_token_id": null,
+            "diversity_penalty": 0.0,
+            "do_sample": false,
+            "early_stopping": false,
+            "encoder_no_repeat_ngram_size": 0,
+            "eos_token_id": 2,
+            "exponential_decay_length_penalty": null,
+            "finetuning_task": null,
+            "forced_bos_token_id": null,
+            "forced_eos_token_id": null,
+            "hidden_act": "gelu",
+            "hidden_dropout_prob": 0.1,
+            "hidden_size": 768,
+            "id2label": {
+                "0": "LABEL_0",
+                "1": "LABEL_1"
+            },
+            "initializer_range": 0.02,
+            "intermediate_size": 3072,
+            "is_decoder": false,
+            "is_encoder_decoder": false,
+            "label2id": {
+                "LABEL_0": 0,
+                "LABEL_1": 1
+            },
+            "layer_norm_eps": 1e-05,
+            "length_penalty": 1.0,
+            "max_length": 20,
+            "max_position_embeddings": 514,
+            "min_length": 0,
+            "model_type": "roberta",
+            "no_repeat_ngram_size": 0,
+            "num_attention_heads": 12,
+            "num_beam_groups": 1,
+            "num_beams": 1,
+            "num_hidden_layers": 12,
+            "num_return_sequences": 1,
+            "output_attentions": false,
+            "output_hidden_states": false,
+            "output_scores": false,
+            "pad_token_id": 1,
+            "position_embedding_type": "absolute",
+            "prefix": null,
+            "problem_type": null,
+            "pruned_heads": {},
+            "remove_invalid_values": false,
+            "repetition_penalty": 1.0,
+            "return_dict": true,
+            "return_dict_in_generate": false,
+            "sep_token_id": null,
+            "suppress_tokens": null,
+            "task_specific_params": null,
+            "temperature": 1.0,
+            "tf_legacy_loss": false,
+            "tie_encoder_decoder": false,
+            "tie_word_embeddings": true,
+            "tokenizer_class": null,
+            "top_k": 50,
+            "top_p": 1.0,
+            "torch_dtype": null,
+            "torchscript": false,
+            "transformers_version": "4.31.0",
+            "type_vocab_size": 1,
+            "typical_p": 1.0,
+            "use_bfloat16": false,
+            "use_cache": true,
+            "vocab_size": 50265
+        },
+        "transformers_version": null,
+        "vision_config": {
+            "_name_or_path": "openai/clip-vit-base-patch32",
+            "add_cross_attention": false,
+            "architectures": null,
+            "attention_dropout": 0.0,
+            "bad_words_ids": null,
+            "begin_suppress_tokens": null,
+            "bos_token_id": null,
+            "chunk_size_feed_forward": 0,
+            "cross_attention_hidden_size": null,
+            "decoder_start_token_id": null,
+            "diversity_penalty": 0.0,
+            "do_sample": false,
+            "dropout": 0.0,
+            "early_stopping": false,
+            "encoder_no_repeat_ngram_size": 0,
+            "eos_token_id": null,
+            "exponential_decay_length_penalty": null,
+            "finetuning_task": null,
+            "forced_bos_token_id": null,
+            "forced_eos_token_id": null,
+            "hidden_act": "quick_gelu",
+            "hidden_size": 768,
+            "id2label": {
+                "0": "LABEL_0",
+                "1": "LABEL_1"
+            },
+            "image_size": 224,
+            "initializer_factor": 1.0,
+            "initializer_range": 0.02,
+            "intermediate_size": 3072,
+            "is_decoder": false,
+            "is_encoder_decoder": false,
+            "label2id": {
+                "LABEL_0": 0,
+                "LABEL_1": 1
+            },
+            "layer_norm_eps": 1e-05,
+            "length_penalty": 1.0,
+            "max_length": 20,
+            "min_length": 0,
+            "model_type": "clip_vision_model",
+            "no_repeat_ngram_size": 0,
+            "num_attention_heads": 12,
+            "num_beam_groups": 1,
+            "num_beams": 1,
+            "num_channels": 3,
+            "num_hidden_layers": 12,
+            "num_return_sequences": 1,
+            "output_attentions": false,
+            "output_hidden_states": false,
+            "output_scores": false,
+            "pad_token_id": null,
+            "patch_size": 32,
+            "prefix": null,
+            "problem_type": null,
+            "projection_dim": 512,
+            "pruned_heads": {},
+            "remove_invalid_values": false,
+            "repetition_penalty": 1.0,
+            "return_dict": true,
+            "return_dict_in_generate": false,
+            "sep_token_id": null,
+            "suppress_tokens": null,
+            "task_specific_params": null,
+            "temperature": 1.0,
+            "tf_legacy_loss": false,
+            "tie_encoder_decoder": false,
+            "tie_word_embeddings": true,
+            "tokenizer_class": null,
+            "top_k": 50,
+            "top_p": 1.0,
+            "torch_dtype": null,
+            "torchscript": false,
+            "transformers_version": "4.31.0",
+            "typical_p": 1.0,
+            "use_bfloat16": false
+        }
+    },
+    "name_or_path": "",
+    "warnings_issued": {},
+    "generation_config": None,
+    "vision_embed_dim": 768,
+    "text_embed_dim": 768,
+    "projection_dim": 512
+}

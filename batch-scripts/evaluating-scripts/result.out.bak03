@@ -1,0 +1,22 @@
+2024-03-20 10:05:26,638 INFO MainProcess Begin Evaluation
+2024-03-20 10:05:26,638 INFO MainProcess Metric : identity
+2024-03-20 10:27:32,972 INFO MainProcess variation   finetuned      meta   section  special-token-base  special-token-meta  zero-shot
+base_model                                                                                  
+miread       0.021215  0.019552  0.021673            0.000002            0.017260   0.000002
+roberta      0.016148  0.011734  0.016513            0.000003            0.011659   0.000000
+scibert      0.021546  0.019084  0.021848            0.000000            0.018237   0.000000
+specter2     0.021191  0.020255  0.021626            0.000000            0.019182   0.000000
+2024-03-20 10:27:32,976 INFO MainProcess Metric : section
+2024-03-20 10:49:32,066 INFO MainProcess variation   finetuned      meta   section  special-token-base  special-token-meta  zero-shot
+base_model                                                                                  
+miread       0.711908  0.718086  0.716222            0.456598            0.713445   0.563631
+roberta      0.703532  0.709815  0.712495            0.336515            0.707521   0.510946
+scibert      0.710310  0.712539  0.715853            0.487823            0.715082   0.308809
+specter2     0.710516  0.714777  0.714400            0.360400            0.716382   0.555084
+2024-03-20 10:49:32,068 INFO MainProcess Metric : concepts
+2024-03-20 11:12:52,933 INFO MainProcess variation   finetuned      meta   section  special-token-base  special-token-meta  zero-shot
+base_model                                                                                  
+miread       0.188043  0.198795  0.189238            0.077746            0.196162   0.084589
+roberta      0.177599  0.191835  0.179315            0.061796            0.197017   0.072743
+scibert      0.188902  0.196150  0.188852            0.076389            0.196874   0.061700
+specter2     0.188172  0.198542  0.189089            0.062934            0.198653   0.065294

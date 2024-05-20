@@ -1,0 +1,62 @@
+[
+    Row(description='weighted average/moment of some pixel intensities', 
+    id='https://openalex.org/C108311513', 
+    ids=Row(mag=108311513, 
+    openalex='https://openalex.org/C108311513', 
+    umls_aui=None, umls_cui=None, 
+    wikidata='https://www.wikidata.org/wiki/Q841934', 
+    wikipedia='https://en.wikipedia.org/wiki/Image%20moment'), 
+    related_concepts=[
+        Row(display_name='Scale space', id='https://openalex.org/C99102927', level=4, score=1.3044273, wikidata=None), 
+        Row(display_name='Expected value', id='https://openalex.org/C141042865', level=2, score=1.3009301, wikidata=None), 
+        Row(display_name='Mean-shift', id='https://openalex.org/C48548287', level=3, score=1.2796518, wikidata=None), 
+        Row(display_name='Velocity Moments', id='https://openalex.org/C149539972', level=4, score=1.25637, wikidata=None), 
+        Row(display_name='Corner detection', id='https://openalex.org/C39499422', level=3, score=1.184523, wikidata=None), 
+        Row(display_name='Fourier transform', id='https://openalex.org/C102519508', level=2, score=1.1724817, wikidata=None), 
+        Row(display_name='Structure tensor', id='https://openalex.org/C113315163', level=3, score=1.1695758, wikidata=None), 
+        Row(display_name='Computer vision', id='https://openalex.org/C31972630', level=1, score=1.168569, wikidata=None), 
+        Row(display_name='Central moment', id='https://openalex.org/C120229918', level=4, score=1.1673931, wikidata=None), 
+        Row(display_name='Eigenvalues and eigenvectors', id='https://openalex.org/C158693339', level=2, score=1.1490119, wikidata=None), 
+        Row(display_name='Point distribution model', id='https://openalex.org/C118317068', level=2, score=1.0583909, wikidata=None), 
+        Row(display_name='Edge detection', id='https://openalex.org/C193536780', level=4, score=1.0222323, wikidata=None), 
+        Row(display_name='Ellipsoid', id='https://openalex.org/C57489055', level=2, score=0.9932559, wikidata=None), 
+        Row(display_name='Background subtraction', id='https://openalex.org/C32653426', level=3, score=0.9857066, wikidata=None), 
+        Row(display_name='Zernike polynomials', id='https://openalex.org/C92423082', level=3, score=0.97706866, wikidata=None), 
+        Row(display_name='Kurtosis', id='https://openalex.org/C166963901', level=2, score=0.97641367, wikidata=None), 
+        Row(display_name='Cumulant', id='https://openalex.org/C172686274', level=2, score=0.9760263, wikidata=None), 
+        Row(display_name='Centroid', id='https://openalex.org/C146599234', level=2, score=0.95149535, wikidata=None)])]
+
+
+[
+    Row(
+        id='https://openalex.org/W2806199454', 
+        doi='https://doi.org/10.18524/2307-4558.2017.28.115831', 
+        display_name='Linguistic representation of love in tales by I. A. Bunin', 
+        title='Linguistic representation of love in tales by I. A. Bunin', 
+        publication_year=2017, publication_date='2017-11-21', 
+        ids={
+            'openalex': 'https://openalex.org/W2806199454', 
+            'mag': '2806199454', 
+            'doi': 'https://doi.org/10.18524/2307-4558.2017.28.115831'
+            }, 
+        host_venue=
+            Row(
+                id='https://openalex.org/S4210170667', 
+                issn_l='2307-4558', issn=['2414-9489', '2307-4558'], 
+                display_name='Мова', publisher='Odesa I.I. Mechnikov National University', 
+                type='journal', url='http://mova.onu.edu.ua/article/download/115831/121328', 
+                is_oa=True, version='publishedVersion', license='cc-by-nc'), 
+                primary_location='{"source":{"id":"https://openalex.org/S4210170667","issn_l":"2307-4558","issn":["2414-9489","2307-4558"],"display_name":"Мова","publisher":"Odesa I.I. Mechnikov National University","host_organization":null,"host_organization_name":"Odesa I.I. Mechnikov National University","publisher_id":null,"type":"journal"},"pdf_url":"http://mova.onu.edu.ua/article/download/115831/121328","landing_page_url":"https://doi.org/10.18524/2307-4558.2017.28.115831","is_oa":true,"version":"publishedVersion","license":"cc-by-nc"}', 
+                best_oa_location='{"source":{"id":"https://openalex.org/S4210170667","issn_l":"2307-4558","issn":["2414-9489","2307-4558"],"display_name":"Мова","publisher":"Odesa I.I. Mechnikov National University","host_organization":null,"host_organization_name":"Odesa I.I. Mechnikov National University","publisher_id":null,"type":"journal"},"pdf_url":"http://mova.onu.edu.ua/article/download/115831/121328","landing_page_url":"https://doi.org/10.18524/2307-4558.2017.28.115831","is_oa":true,"version":"publishedVersion","license":"cc-by-nc"}', 
+                type='journal-article', 
+                open_access=Row(is_oa=True, oa_status='gold', oa_url='http://mova.onu.edu.ua/article/download/115831/121328'), 
+                authorships=[Row(author_position='first', author=Row(id='https://openalex.org/A4346275665', display_name='З Н Бакалова', orcid=None), 
+                institutions=[Row(id=None, display_name='Самарський державний соціально-педагогічний університет', ror=None, country_code=None, type=None)], 
+                raw_affiliation_string='Самарський державний соціально-педагогічний університет'), 
+                Row(author_position='last', 
+                author=Row(id='https://openalex.org/A4331566441', display_name='Оксана Іванівна Краснова', orcid=None), institutions=[Row(id=None, display_name='Самарський державний університет шляхів сполучення', ror=None, country_code=None, type=None)], raw_affiliation_string='Самарський державний університет шляхів сполучення')], 
+                cited_by_count=0, 
+                biblio=Row(volume=None, issue=None, first_page=None, last_page=None), is_retracted=False, is_paratext=False, 
+                concepts=[Row(id='https://openalex.org/C41008148', wikidata='https://www.wikidata.org/wiki/Q21198', display_name='Computer science', level=0, score=0.2854723334312439)], 
+                mesh=[],
+                alternate_host_venues=[Row(id='https://openalex.org/S4210170667', issn_l='2307-4558', issn=['2414-9489', '2307-4558'], display_name='Мова', publisher='Odesa I.I. Mechnikov National University', type='journal', url='http://mova.onu.edu.ua/article/download/115831/121328', is_oa=True, version='publishedVersion', license='cc-by-nc')], locations=['{"source":{"id":"https://openalex.org/S4210170667","issn_l":"2307-4558","issn":["2414-9489","2307-4558"],"display_name":"Мова","publisher":"Odesa I.I. Mechnikov National University","host_organization":null,"host_organization_name":"Odesa I.I. Mechnikov National University","publisher_id":null,"type":"journal"},"pdf_url":"http://mova.onu.edu.ua/article/download/115831/121328","landing_page_url":"https://doi.org/10.18524/2307-4558.2017.28.115831","is_oa":true,"version":"publishedVersion","license":"cc-by-nc"}'], referenced_works=[], related_works=['https://openalex.org/W110407140', 'https://openalex.org/W568226937', 'https://openalex.org/W1218520452', 'https://openalex.org/W1482039440', 'https://openalex.org/W2039946108', 'https://openalex.org/W2286500840', 'https://openalex.org/W2312346344', 'https://openalex.org/W2482936575', 'https://openalex.org/W2592963949', 'https://openalex.org/W2789325263', 'https://openalex.org/W2921306677', 'https://openalex.org/W2991474890', 'https://openalex.org/W3005493832', 'https://openalex.org/W3037957431', 'https://openalex.org/W3038174886', 'https://openalex.org/W3042879406', 'https://openalex.org/W3111361784', 'https://openalex.org/W3158757864', 'https://openalex.org/W3162052117', 'https://openalex.org/W3167586599'], counts_by_year=[], cited_by_api_url='https://api.openalex.org/works?filter=cites:W2806199454', updated_date='2023-03-28T17:25:31.241096', created_date='2018-06-13')]

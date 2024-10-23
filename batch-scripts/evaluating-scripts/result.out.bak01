@@ -1,0 +1,94 @@
+2024-03-19 21:12:49,323 INFO MainProcess Begin Evaluation
+2024-03-19 21:12:49,324 INFO MainProcess Metric : identity
+2024-03-19 21:12:50,815 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:12:55,950 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:13:00,963 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:13:06,071 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:13:10,926 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:13:16,021 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:13:21,279 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:13:26,604 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:13:32,062 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:13:37,869 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:13:43,035 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:13:48,127 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:13:53,291 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:13:58,034 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:14:03,374 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:14:08,980 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:14:14,040 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:14:19,493 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:14:25,101 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:14:30,317 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:14:35,679 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:14:40,804 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:14:46,194 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:14:51,265 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:14:55,053 INFO MainProcess variation   finetuned      meta   section  special-token-base  special-token-meta  zero-shot
+base_model                                                                                  
+miread       0.060171  0.054945  0.060101            0.000014            0.049984    0.00000
+roberta      0.048978  0.036611  0.050627            0.000014            0.034697    0.00000
+scibert      0.059472  0.053925  0.060911            0.000000            0.051801    0.00000
+specter2     0.059500  0.056482  0.060269            0.000028            0.052723    0.00007
+2024-03-19 21:14:55,055 INFO MainProcess Metric : section
+2024-03-19 21:14:56,559 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:15:01,526 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:15:06,799 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:15:11,945 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:15:17,028 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:15:22,133 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:15:27,852 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:15:32,978 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:15:38,591 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:15:44,402 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:15:50,167 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:15:55,477 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:16:01,094 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:16:06,290 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:16:11,604 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:16:17,108 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:16:22,400 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:16:27,815 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:16:33,088 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:16:38,336 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:16:43,666 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:16:49,082 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:16:54,527 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:16:59,932 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:17:04,142 INFO MainProcess variation   finetuned      meta   section  special-token-base  special-token-meta  zero-shot
+base_model                                                                                  
+miread       0.715705  0.725305  0.722035            0.439082            0.716278   0.574375
+roberta      0.709095  0.711247  0.719729            0.404441            0.712840   0.617456
+scibert      0.715635  0.719338  0.719338            0.550732            0.720750   0.284169
+specter2     0.714992  0.723055  0.718653            0.349021            0.721686   0.497086
+2024-03-19 21:17:04,143 INFO MainProcess Metric : concepts
+2024-03-19 21:17:05,715 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:17:11,480 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:17:17,378 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:17:23,387 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:17:29,244 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:17:34,974 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:17:40,999 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:17:46,749 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:17:52,658 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:17:58,698 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:18:04,600 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:18:10,316 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:18:16,225 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:18:21,852 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:18:27,645 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:18:33,497 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:18:39,792 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:18:45,633 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:18:51,617 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:18:57,252 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:19:03,108 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:19:09,159 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:19:15,161 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:19:20,869 DEBUG MainProcess Records with blank concepts: 7268 / 71563
+2024-03-19 21:19:25,288 INFO MainProcess variation   finetuned      meta   section  special-token-base  special-token-meta  zero-shot
+base_model                                                                                  
+miread       0.149656  0.149715  0.149503            0.046061            0.144820   0.046538
+roberta      0.137371  0.133256  0.138442            0.056834            0.132618   0.038020
+scibert      0.148359  0.148944  0.149869            0.044414            0.146214   0.042335
+specter2     0.148457  0.150535  0.150106            0.038855            0.148464   0.042814

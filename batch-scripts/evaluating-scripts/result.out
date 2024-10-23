@@ -1,0 +1,87 @@
+2024-03-20 22:28:16,696 INFO MainProcess Begin Evaluation
+2024-03-20 22:28:16,696 INFO MainProcess Metric : identity
+2024-03-20 22:30:26,606 INFO MainProcess variation   finetuned      meta   section  special-token-base  special-token-meta  special-token-meta-full  zero-shot
+base_model                                                                                                           
+miread       0.060171  0.054945  0.060101            0.000014            0.049984                      NaN    0.00000
+roberta      0.048978  0.036611  0.050627            0.000014            0.034697                      NaN    0.00000
+scibert      0.059472  0.053925  0.060911            0.000000            0.051801                      NaN    0.00000
+specter2     0.059500  0.056482  0.060269            0.000028            0.052723                 0.112572    0.00007
+2024-03-20 22:30:26,608 INFO MainProcess Metric : section
+2024-03-20 22:32:30,845 INFO MainProcess variation   finetuned      meta   section  special-token-base  special-token-meta  special-token-meta-full  zero-shot
+base_model                                                                                                           
+miread       0.715705  0.725305  0.722035            0.439082            0.716278                      NaN   0.574375
+roberta      0.709095  0.711247  0.719729            0.404441            0.712840                      NaN   0.617456
+scibert      0.715635  0.719338  0.719338            0.550732            0.720750                      NaN   0.284169
+specter2     0.714992  0.723055  0.718653            0.349021            0.721686                 0.728184   0.497086
+2024-03-20 22:32:30,847 INFO MainProcess Metric : concepts
+2024-03-20 22:34:44,106 INFO MainProcess variation   finetuned      meta   section  special-token-base  special-token-meta  special-token-meta-full  zero-shot
+base_model                                                                                                           
+miread       0.149656  0.149715  0.149503            0.046061            0.144820                      NaN   0.046538
+roberta      0.137371  0.133256  0.138442            0.056834            0.132618                      NaN   0.038020
+scibert      0.148359  0.148944  0.149869            0.044414            0.146214                      NaN   0.042335
+specter2     0.148457  0.150535  0.150106            0.038855            0.148464                 0.208925   0.042814
+2024-03-20 22:45:03,300 INFO MainProcess Begin Evaluation
+2024-03-20 22:45:03,302 INFO MainProcess Metric : identity
+2024-03-20 22:45:09,021 INFO MainProcess variation   special-token-meta-full
+base_model                         
+specter2                   0.112572
+2024-03-20 22:45:09,023 INFO MainProcess Metric : section
+2024-03-20 22:45:13,737 INFO MainProcess variation   special-token-meta-full
+base_model                         
+specter2                   0.728184
+2024-03-20 22:45:13,738 INFO MainProcess Metric : concepts
+2024-03-20 22:45:19,009 INFO MainProcess variation   special-token-meta-full
+base_model                         
+specter2                   0.268069
+2024-03-30 19:32:51,935 INFO MainProcess Begin Evaluation
+2024-03-30 19:32:51,936 INFO MainProcess Metric : identity
+2024-03-30 19:33:01,811 INFO MainProcess variation   special-token-meta-full  special-token-meta-full-b192
+base_model                                                       
+specter2                   0.112572                       0.29989
+2024-03-30 19:33:01,813 INFO MainProcess Metric : section
+2024-03-30 19:33:12,175 INFO MainProcess variation   special-token-meta-full  special-token-meta-full-b192
+base_model                                                       
+specter2                   0.728184                      0.793161
+2024-03-30 19:33:12,177 INFO MainProcess Metric : concepts
+2024-03-30 19:33:23,577 INFO MainProcess variation   special-token-meta-full  special-token-meta-full-b192
+base_model                                                       
+specter2                   0.268069                       0.43979
+2024-03-30 19:36:51,999 INFO MainProcess Begin Evaluation
+2024-03-30 19:36:51,999 INFO MainProcess Metric : identity
+2024-03-30 19:37:01,568 INFO MainProcess variation   special-token-meta-full  special-token-meta-full-b192
+base_model                                                       
+specter2                   0.112572                       0.29989
+2024-03-30 19:37:01,569 INFO MainProcess Metric : section
+2024-03-30 19:37:11,257 INFO MainProcess variation   special-token-meta-full  special-token-meta-full-b192
+base_model                                                       
+specter2                   0.728184                      0.793161
+2024-03-30 19:37:11,258 INFO MainProcess Metric : concepts
+2024-03-30 19:37:21,958 INFO MainProcess variation   special-token-meta-full  special-token-meta-full-b192
+base_model                                                       
+specter2                   0.208925                       0.38886
+2024-04-04 23:19:38,278 INFO MainProcess Begin Evaluation
+2024-04-04 23:19:38,279 INFO MainProcess Metric : identity
+2024-04-04 23:19:47,905 INFO MainProcess variation   meta-b192  special-token-meta-b192
+base_model                                    
+specter2     0.078896                 0.081397
+2024-04-04 23:19:47,907 INFO MainProcess Metric : section
+2024-04-04 23:19:59,886 INFO MainProcess variation   meta-b192  special-token-meta-b192
+base_model                                    
+specter2     0.738524                 0.739866
+2024-04-04 23:19:59,887 INFO MainProcess Metric : concepts
+2024-04-04 23:20:10,866 INFO MainProcess variation   meta-b192  special-token-meta-b192
+base_model                                    
+specter2      0.17764                  0.18087
+2024-04-08 11:15:46,911 INFO MainProcess Begin Evaluation
+2024-04-08 11:15:46,912 INFO MainProcess Metric : identity
+2024-04-08 11:15:51,664 INFO MainProcess variation   meta-b192-full
+base_model                
+specter2          0.171723
+2024-04-08 11:15:51,666 INFO MainProcess Metric : section
+2024-04-08 11:15:56,111 INFO MainProcess variation   meta-b192-full
+base_model                
+specter2          0.778042
+2024-04-08 11:15:56,112 INFO MainProcess Metric : concepts
+2024-04-08 11:16:01,453 INFO MainProcess variation   meta-b192-full
+base_model                
+specter2          0.282608

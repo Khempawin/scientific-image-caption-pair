@@ -14,6 +14,7 @@ from xml.etree.ElementTree import Element
 from typing import List, Dict, Any
 from tarfile import TarFile
 from logging import Logger
+from zipfile import ZipFile
 
 
 def extract_directory(target_root:str) -> List[DirEntry]:
@@ -50,7 +51,15 @@ def process_caption(node: Element):
     return "{}{}".format(caption_title, caption_p)
 
 
-def process_graphic(tar_archive: TarFile, node: Element, first_level_code: str, second_level_code: str, document_id: str, output_image_dir: str, logger: Logger=None, omit_image_file: bool=True):
+def process_graphic(
+        tar_archive: TarFile, 
+        node: Element, 
+        first_level_code: str, 
+        second_level_code: str, 
+        document_id: str, 
+        output_image_zip: ZipFile=None, 
+        logger: Logger=None, 
+        omit_image_file: bool=True):
     if logger is None:
         logger = logging
     IMAGE_FILE_EXTENSIONS = [".jpg", ".png", ".gif", ".tif"]
@@ -87,9 +96,8 @@ def process_graphic(tar_archive: TarFile, node: Element, first_level_code: str, 
 
     image_file = tar_archive.extractfile("{}/{}".format(document_id, image_name))
     
-    # Save image to output directory
-    with open(f"{output_image_dir}/{saved_image_name}", "wb") as f:
-        f.writelines(image_file.readlines())
+    # Save image to output zip
+    output_image_zip.writestr(saved_image_name, image_file.read())
 
     return saved_image_name
 
@@ -102,11 +110,12 @@ def get_image_type(node: Element):
     
 
 def process_node_with_graphic(tar_archive: TarFile, 
+                              section: str,
                               node: Element, 
                               first_level_code: str, 
                               second_level_code: str, 
                               document_id: str, 
-                              output_image_dir: str, 
+                              output_image_zip: ZipFile=None, 
                               logger: Logger=None, 
                               omit_image_file:bool=True):
     if logger is None:
@@ -114,13 +123,17 @@ def process_node_with_graphic(tar_archive: TarFile,
     record_dict = dict()
     record_dict["document_id"] = document_id
     record_dict["caption"] = process_caption(node)
+    record_dict["section"] = section
+
+    if(len(record_dict["caption"]) == 0):
+        return None
 
     image_path = process_graphic(tar_archive, 
                                  node, 
                                  first_level_code=first_level_code,
                                  second_level_code=second_level_code,
                                  document_id=document_id, 
-                                 output_image_dir=output_image_dir, 
+                                 output_image_zip=output_image_zip, 
                                  logger=logger,
                                  omit_image_file=omit_image_file)
 
@@ -134,10 +147,18 @@ def process_node_with_graphic(tar_archive: TarFile,
     return record_dict
 
 
+def is_section_node(node: Element):
+    return node.tag == "sec"
+
+
+def get_section_title(section_node: Element):
+    return section_node.find("title").text
+
+
 def process_document_tar(entry: DirEntry, 
                          first_level_code:str, 
                          second_level_code:str, 
-                         output_image_dir: str="output/images", 
+                         output_image_zip: ZipFile=None, 
                          logger: Logger=None, 
                          omit_image_file:bool=True):
     if logger is None:
@@ -177,18 +198,25 @@ def process_document_tar(entry: DirEntry,
         tree = load_cleaned_xml_from_str(nxml_content)
         record_list = list()
 
-        # Extract image(figure) file names and captions from tree
-        figure_nodes = [node for node in tree.iter() if node_has_graphic(node)]
+        # Extract section nodes from tree
+        body_node = tree.find("body")
+        section_nodes = [node for node in body_node.findall("sec")]
+        figure_nodes = list()
+        for section_node in section_nodes:
+            section_title = get_section_title(section_node)
+            sub_figure_nodes = [{"node": node, "section": section_title} for node in section_node.iter() if node_has_graphic(node)]
+            figure_nodes.extend(sub_figure_nodes)
 
         if len(figure_nodes) == 0:
             return []
 
         record_list = [process_node_with_graphic(tar_archive=tar_archive,
-                                                node=figure, 
+                                                 section=figure.get("section"),
+                                                node=figure.get("node"), 
                                                 first_level_code=first_level_code,
                                                 second_level_code=second_level_code,
                                                 document_id=document_id, 
-                                                output_image_dir=output_image_dir,
+                                                output_image_zip=output_image_zip,
                                                 omit_image_file=omit_image_file) for figure in figure_nodes]
         record_list = list(filter(lambda x: x is not None, record_list))
         
@@ -222,10 +250,15 @@ def process_tar_dir(target_dir: str,
     output_dir_base = Path(f"{output_dir_prefix}/output_{output_dir_suffix}") if flatten_output_dir else Path(
         f"{output_dir_prefix}/output_{first_level_code}")
     output_dir_base.mkdir(parents=True, exist_ok=True)
+    output_caption_base = output_dir_base / "caption"
+    output_caption_base.mkdir(parents=True, exist_ok=True)
+        
+    output_image_zip = None
     output_image_dir = Path(f"{output_dir_prefix}/output_{output_dir_suffix}/images") if flatten_output_dir else Path(
         f"{output_dir_prefix}/output_{first_level_code}/{first_level_code}_{second_level_code}_images")
     if(not omit_image_file):
-        output_image_dir.mkdir(parents=True, exist_ok=True)
+        output_image_zip = ZipFile(f"{output_image_dir}.zip", "w")
+
 
     record_list = list()
 
@@ -235,18 +268,20 @@ def process_tar_dir(target_dir: str,
         subrecord_list = process_document_tar(doc,
                                               first_level_code=first_level_code,
                                               second_level_code=second_level_code,
-                                              output_image_dir=output_image_dir,
+                                              output_image_zip=output_image_zip,
                                               omit_image_file=omit_image_file)
         record_list.extend(subrecord_list)
 
     record_df = pd.DataFrame(record_list)
+    if(output_image_zip is not None and not omit_image_file):
+        output_image_zip.close()
     if(output_caption_file_type == "parquet"):
-        parquet_path = output_dir_base / \
-            "captions.parquet" if flatten_output_dir else output_dir_base / \
+        parquet_path = output_caption_base / \
+            "captions.parquet" if flatten_output_dir else output_caption_base / \
             f"{first_level_code}_{second_level_code}_captions.parquet"
         record_df.to_parquet(parquet_path, compression="gzip")
     else:
-        csv_file_path = output_dir_base / "captions.csv" if flatten_output_dir else output_dir_base / \
+        csv_file_path = output_caption_base / "captions.csv" if flatten_output_dir else output_caption_base / \
             f"{first_level_code}_{second_level_code}_captions.csv"
         record_df.to_csv(csv_file_path, sep="|")
 

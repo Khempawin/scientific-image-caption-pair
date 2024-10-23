@@ -1,0 +1,429 @@
+2024-02-28 08:34:57,833 INFO MainProcess 56 : (37918, 12)
+2024-02-28 08:37:15,741 INFO MainProcess        Loaded 37918 images
+2024-02-28 08:37:16,086 INFO MainProcess ba : (38878, 12)
+2024-02-28 08:39:39,193 INFO MainProcess        Loaded 38878 images
+2024-02-28 08:39:39,533 INFO MainProcess 61 : (38779, 12)
+2024-02-28 08:42:02,921 INFO MainProcess        Loaded 38779 images
+2024-02-28 08:42:03,265 INFO MainProcess 1f : (37255, 12)
+2024-02-28 08:44:16,849 INFO MainProcess        Loaded 37255 images
+2024-02-28 08:44:17,197 INFO MainProcess aa : (38400, 12)
+2024-02-28 08:46:38,144 INFO MainProcess        Loaded 38400 images
+2024-02-28 08:46:38,484 INFO MainProcess 40 : (37846, 12)
+2024-02-28 08:48:54,210 INFO MainProcess        Loaded 37846 images
+2024-02-28 08:48:54,548 INFO MainProcess ef : (37411, 12)
+2024-02-28 08:51:10,740 INFO MainProcess        Loaded 37411 images
+2024-02-28 08:51:11,094 INFO MainProcess 7b : (38455, 12)
+2024-02-28 08:53:37,608 INFO MainProcess        Loaded 38455 images
+2024-02-28 08:53:37,946 INFO MainProcess 4b : (38592, 12)
+2024-02-28 08:55:59,765 INFO MainProcess        Loaded 38592 images
+2024-02-28 08:56:00,101 INFO MainProcess 7f : (36893, 12)
+2024-02-28 08:58:15,218 INFO MainProcess        Loaded 36893 images
+2024-02-28 08:58:15,553 INFO MainProcess 72 : (37880, 12)
+2024-02-28 09:00:30,735 INFO MainProcess        Loaded 37880 images
+2024-02-28 09:00:31,070 INFO MainProcess fd : (37378, 12)
+2024-02-28 09:02:43,800 INFO MainProcess        Loaded 37378 images
+2024-02-28 09:02:44,136 INFO MainProcess 64 : (37538, 12)
+2024-02-28 09:04:56,177 INFO MainProcess        Loaded 37538 images
+2024-02-28 09:04:56,516 INFO MainProcess da : (38063, 12)
+2024-02-28 09:07:11,337 INFO MainProcess        Loaded 38063 images
+2024-02-28 09:07:11,673 INFO MainProcess 96 : (37896, 12)
+2024-02-28 09:09:24,681 INFO MainProcess        Loaded 37896 images
+2024-02-28 09:09:25,023 INFO MainProcess 06 : (38414, 12)
+2024-02-28 09:11:41,654 INFO MainProcess        Loaded 38414 images
+2024-02-28 09:11:41,997 INFO MainProcess 9f : (38059, 12)
+2024-02-28 09:13:55,176 INFO MainProcess        Loaded 38059 images
+2024-02-28 09:13:55,516 INFO MainProcess 24 : (38536, 12)
+2024-02-28 09:16:10,008 INFO MainProcess        Loaded 38536 images
+2024-02-28 09:16:10,346 INFO MainProcess 23 : (37979, 12)
+2024-02-28 09:18:25,677 INFO MainProcess        Loaded 37979 images
+2024-02-28 09:18:26,015 INFO MainProcess 39 : (38871, 12)
+2024-02-28 09:20:45,415 INFO MainProcess        Loaded 38871 images
+2024-02-28 09:20:45,751 INFO MainProcess b2 : (38919, 12)
+2024-02-28 09:23:07,413 INFO MainProcess        Loaded 38919 images
+2024-02-28 09:23:07,749 INFO MainProcess 35 : (37983, 12)
+2024-02-28 09:25:25,497 INFO MainProcess        Loaded 37983 images
+2024-02-28 09:25:25,830 INFO MainProcess 5b : (37886, 12)
+2024-02-28 09:27:43,350 INFO MainProcess        Loaded 37886 images
+2024-02-28 09:27:43,685 INFO MainProcess 52 : (38182, 12)
+2024-02-28 09:30:01,104 INFO MainProcess        Loaded 38182 images
+2024-02-28 09:30:01,447 INFO MainProcess 59 : (38629, 12)
+2024-02-28 09:32:21,010 INFO MainProcess        Loaded 38629 images
+2024-02-28 09:32:21,346 INFO MainProcess f1 : (38623, 12)
+2024-02-28 09:34:39,300 INFO MainProcess        Loaded 38623 images
+2024-02-28 09:34:39,631 INFO MainProcess 8e : (38782, 12)
+2024-02-28 09:37:01,258 INFO MainProcess        Loaded 38782 images
+2024-02-28 09:37:01,596 INFO MainProcess d3 : (38262, 12)
+2024-02-28 09:39:21,429 INFO MainProcess        Loaded 38262 images
+2024-02-28 09:39:21,768 INFO MainProcess 27 : (38473, 12)
+2024-02-28 09:41:39,643 INFO MainProcess        Loaded 38473 images
+2024-02-28 09:41:39,979 INFO MainProcess 91 : (38028, 12)
+2024-02-28 09:44:03,470 INFO MainProcess        Loaded 38028 images
+2024-02-28 09:44:03,811 INFO MainProcess 3d : (39232, 12)
+2024-02-28 09:46:24,900 INFO MainProcess        Loaded 39232 images
+2024-02-28 09:46:25,237 INFO MainProcess 3a : (38576, 12)
+2024-02-28 09:48:44,845 INFO MainProcess        Loaded 38575 images
+2024-02-28 09:48:45,180 INFO MainProcess 95 : (37759, 12)
+2024-02-28 09:51:02,042 INFO MainProcess        Loaded 37759 images
+2024-02-28 09:51:02,382 INFO MainProcess 65 : (38847, 12)
+2024-02-28 09:53:23,685 INFO MainProcess        Loaded 38847 images
+2024-02-28 09:53:24,018 INFO MainProcess 3f : (37981, 12)
+2024-02-28 09:55:38,824 INFO MainProcess        Loaded 37981 images
+2024-02-28 09:55:39,161 INFO MainProcess 14 : (38699, 12)
+2024-02-28 09:57:58,210 INFO MainProcess        Loaded 38699 images
+2024-02-28 09:57:58,548 INFO MainProcess 8a : (37843, 12)
+2024-02-28 10:00:14,376 INFO MainProcess        Loaded 37843 images
+2024-02-28 10:00:14,713 INFO MainProcess 08 : (37469, 12)
+2024-02-28 10:02:30,032 INFO MainProcess        Loaded 37469 images
+2024-02-28 10:02:30,369 INFO MainProcess f7 : (38447, 12)
+2024-02-28 10:04:49,544 INFO MainProcess        Loaded 38447 images
+2024-02-28 10:04:49,883 INFO MainProcess 51 : (37754, 12)
+2024-02-28 10:07:11,137 INFO MainProcess        Loaded 37754 images
+2024-02-28 10:07:11,471 INFO MainProcess 48 : (37589, 12)
+2024-02-28 10:09:28,957 INFO MainProcess        Loaded 37589 images
+2024-02-28 10:09:29,295 INFO MainProcess 04 : (38764, 12)
+2024-02-28 10:11:50,558 INFO MainProcess        Loaded 38764 images
+2024-02-28 10:11:50,911 INFO MainProcess a5 : (38267, 12)
+2024-02-28 10:14:09,049 INFO MainProcess        Loaded 38267 images
+2024-02-28 10:14:09,388 INFO MainProcess 9b : (38103, 12)
+2024-02-28 10:16:29,062 INFO MainProcess        Loaded 38103 images
+2024-02-28 10:16:29,399 INFO MainProcess 1a : (38659, 12)
+2024-02-28 10:18:50,377 INFO MainProcess        Loaded 38659 images
+2024-02-28 10:18:50,716 INFO MainProcess 8f : (38159, 12)
+2024-02-28 10:21:06,811 INFO MainProcess        Loaded 38159 images
+2024-02-28 10:21:07,147 INFO MainProcess 92 : (38579, 12)
+2024-02-28 10:23:27,484 INFO MainProcess        Loaded 38579 images
+2024-02-28 10:23:27,820 INFO MainProcess eb : (37491, 12)
+2024-02-28 10:25:42,388 INFO MainProcess        Loaded 37491 images
+2024-02-28 10:25:42,729 INFO MainProcess af : (37536, 12)
+2024-02-28 10:27:59,221 INFO MainProcess        Loaded 37536 images
+2024-02-28 10:27:59,562 INFO MainProcess 21 : (37864, 12)
+2024-02-28 10:30:16,172 INFO MainProcess        Loaded 37864 images
+2024-02-28 10:30:16,506 INFO MainProcess ab : (38215, 12)
+2024-02-28 10:32:34,872 INFO MainProcess        Loaded 38215 images
+2024-02-28 10:32:35,207 INFO MainProcess 62 : (38728, 12)
+2024-02-28 10:35:01,047 INFO MainProcess        Loaded 38728 images
+2024-02-28 10:35:01,382 INFO MainProcess 0b : (38583, 12)
+2024-02-28 10:37:20,723 INFO MainProcess        Loaded 38583 images
+2024-02-28 10:37:21,063 INFO MainProcess ee : (37859, 12)
+2024-02-28 10:39:37,176 INFO MainProcess        Loaded 37859 images
+2024-02-28 10:39:37,515 INFO MainProcess 42 : (38238, 12)
+2024-02-28 10:41:53,000 INFO MainProcess        Loaded 38238 images
+2024-02-28 10:41:53,334 INFO MainProcess 5c : (38408, 12)
+2024-02-28 10:44:10,918 INFO MainProcess        Loaded 38408 images
+2024-02-28 10:44:11,251 INFO MainProcess 38 : (38616, 12)
+2024-02-28 10:46:28,180 INFO MainProcess        Loaded 38616 images
+2024-02-28 10:46:28,515 INFO MainProcess dc : (38237, 12)
+2024-02-28 10:48:47,183 INFO MainProcess        Loaded 38237 images
+2024-02-28 10:48:47,516 INFO MainProcess 7a : (37516, 12)
+2024-02-28 10:51:00,980 INFO MainProcess        Loaded 37516 images
+2024-02-28 10:51:01,320 INFO MainProcess 13 : (38427, 12)
+2024-02-28 10:53:21,781 INFO MainProcess        Loaded 38427 images
+2024-02-28 10:53:22,119 INFO MainProcess ec : (38431, 12)
+2024-02-28 10:55:43,080 INFO MainProcess        Loaded 38431 images
+2024-02-28 10:55:43,420 INFO MainProcess 18 : (38692, 12)
+2024-02-28 10:58:04,305 INFO MainProcess        Loaded 38692 images
+2024-02-28 10:58:04,640 INFO MainProcess 97 : (37489, 12)
+2024-02-28 11:00:19,371 INFO MainProcess        Loaded 37489 images
+2024-02-28 11:00:19,705 INFO MainProcess 3e : (38162, 12)
+2024-02-28 11:02:37,373 INFO MainProcess        Loaded 38162 images
+2024-02-28 11:02:37,711 INFO MainProcess b1 : (38360, 12)
+2024-02-28 11:05:00,144 INFO MainProcess        Loaded 38360 images
+2024-02-28 11:05:00,484 INFO MainProcess a2 : (38300, 12)
+2024-02-28 11:07:18,585 INFO MainProcess        Loaded 38300 images
+2024-02-28 11:07:18,920 INFO MainProcess 25 : (37681, 12)
+2024-02-28 11:09:36,134 INFO MainProcess        Loaded 37681 images
+2024-02-28 11:09:36,470 INFO MainProcess 8c : (38445, 12)
+2024-02-28 11:11:57,100 INFO MainProcess        Loaded 38445 images
+2024-02-28 11:11:57,441 INFO MainProcess 44 : (37551, 12)
+2024-02-28 11:14:12,706 INFO MainProcess        Loaded 37551 images
+2024-02-28 11:14:13,044 INFO MainProcess f8 : (38446, 12)
+2024-02-28 11:16:33,066 INFO MainProcess        Loaded 38446 images
+2024-02-28 11:16:33,403 INFO MainProcess f6 : (38359, 12)
+2024-02-28 11:18:51,407 INFO MainProcess        Loaded 38359 images
+2024-02-28 11:18:51,745 INFO MainProcess 31 : (38643, 12)
+2024-02-28 11:21:12,912 INFO MainProcess        Loaded 38643 images
+2024-02-28 11:21:13,251 INFO MainProcess 9e : (38099, 12)
+2024-02-28 11:23:32,176 INFO MainProcess        Loaded 38099 images
+2024-02-28 11:23:32,516 INFO MainProcess 75 : (39429, 12)
+2024-02-28 11:25:56,921 INFO MainProcess        Loaded 39429 images
+2024-02-28 11:25:57,259 INFO MainProcess 71 : (38391, 12)
+2024-02-28 11:28:13,790 INFO MainProcess        Loaded 38391 images
+2024-02-28 11:28:14,128 INFO MainProcess 6f : (38495, 12)
+2024-02-28 11:30:29,366 INFO MainProcess        Loaded 38495 images
+2024-02-28 11:30:29,702 INFO MainProcess 90 : (37552, 12)
+2024-02-28 11:32:45,717 INFO MainProcess        Loaded 37552 images
+2024-02-28 11:32:46,054 INFO MainProcess e6 : (37654, 12)
+2024-02-28 11:35:04,149 INFO MainProcess        Loaded 37654 images
+2024-02-28 11:35:04,493 INFO MainProcess b9 : (38569, 12)
+2024-02-28 11:37:24,989 INFO MainProcess        Loaded 38569 images
+2024-02-28 11:37:25,333 INFO MainProcess d0 : (38588, 12)
+2024-02-28 11:39:43,061 INFO MainProcess        Loaded 38588 images
+2024-02-28 11:39:43,399 INFO MainProcess 53 : (38071, 12)
+2024-02-28 11:42:02,641 INFO MainProcess        Loaded 38070 images
+2024-02-28 11:42:02,977 INFO MainProcess cd : (38080, 12)
+2024-02-28 11:44:20,381 INFO MainProcess        Loaded 38080 images
+2024-02-28 11:44:20,720 INFO MainProcess 99 : (38381, 12)
+2024-02-28 11:46:43,581 INFO MainProcess        Loaded 38381 images
+2024-02-28 11:46:43,920 INFO MainProcess de : (37952, 12)
+2024-02-28 11:49:02,650 INFO MainProcess        Loaded 37952 images
+2024-02-28 11:49:02,989 INFO MainProcess 69 : (38237, 12)
+2024-02-28 11:51:19,142 INFO MainProcess        Loaded 38237 images
+2024-02-28 11:51:19,480 INFO MainProcess f9 : (38683, 12)
+2024-02-28 11:53:41,446 INFO MainProcess        Loaded 38683 images
+2024-02-28 11:53:41,776 INFO MainProcess 73 : (37326, 12)
+2024-02-28 11:55:56,586 INFO MainProcess        Loaded 37326 images
+2024-02-28 11:55:56,924 INFO MainProcess 4a : (38218, 12)
+2024-02-28 11:58:13,800 INFO MainProcess        Loaded 38218 images
+2024-02-28 11:58:14,139 INFO MainProcess 19 : (37981, 12)
+2024-02-28 12:00:35,438 INFO MainProcess        Loaded 37981 images
+2024-02-28 12:00:35,777 INFO MainProcess 33 : (39050, 12)
+2024-02-28 12:02:56,702 INFO MainProcess        Loaded 39050 images
+2024-02-28 12:02:57,037 INFO MainProcess 83 : (37074, 12)
+2024-02-28 12:05:08,301 INFO MainProcess        Loaded 37074 images
+2024-02-28 12:05:08,634 INFO MainProcess d6 : (37930, 12)
+2024-02-28 12:07:26,454 INFO MainProcess        Loaded 37930 images
+2024-02-28 12:07:26,789 INFO MainProcess 4f : (37655, 12)
+2024-02-28 12:09:46,250 INFO MainProcess        Loaded 37655 images
+2024-02-28 12:09:46,581 INFO MainProcess f3 : (38470, 12)
+2024-02-28 12:12:07,128 INFO MainProcess        Loaded 38470 images
+2024-02-28 12:12:07,463 INFO MainProcess c1 : (38753, 12)
+2024-02-28 12:14:32,762 INFO MainProcess        Loaded 38753 images
+2024-02-28 12:14:33,108 INFO MainProcess e4 : (37897, 12)
+2024-02-28 12:16:50,985 INFO MainProcess        Loaded 37897 images
+2024-02-28 12:16:51,325 INFO MainProcess 2a : (38188, 12)
+2024-02-28 12:19:10,541 INFO MainProcess        Loaded 38188 images
+2024-02-28 12:19:10,876 INFO MainProcess c5 : (39553, 12)
+2024-02-28 12:21:33,462 INFO MainProcess        Loaded 39553 images
+2024-02-28 12:21:33,795 INFO MainProcess 17 : (38282, 12)
+2024-02-28 12:23:52,462 INFO MainProcess        Loaded 38281 images
+2024-02-28 12:23:52,799 INFO MainProcess a6 : (38660, 12)
+2024-02-28 12:26:13,971 INFO MainProcess        Loaded 38660 images
+2024-02-28 12:26:14,312 INFO MainProcess 5f : (38604, 12)
+2024-02-28 12:28:36,899 INFO MainProcess        Loaded 38604 images
+2024-02-28 12:28:37,236 INFO MainProcess e5 : (39427, 12)
+2024-02-28 12:31:01,118 INFO MainProcess        Loaded 39427 images
+2024-02-28 12:31:01,451 INFO MainProcess 46 : (37394, 12)
+2024-02-28 12:33:22,067 INFO MainProcess        Loaded 37394 images
+2024-02-28 12:33:22,417 INFO MainProcess b0 : (37992, 12)
+2024-02-28 12:35:39,236 INFO MainProcess        Loaded 37992 images
+2024-02-28 12:35:39,572 INFO MainProcess ce : (38573, 12)
+2024-02-28 12:37:58,838 INFO MainProcess        Loaded 38573 images
+2024-02-28 12:37:59,192 INFO MainProcess 12 : (38549, 12)
+2024-02-28 12:40:15,855 INFO MainProcess        Loaded 38549 images
+2024-02-28 12:40:16,190 INFO MainProcess fb : (37758, 12)
+2024-02-28 12:42:30,664 INFO MainProcess        Loaded 37758 images
+2024-02-28 12:42:31,000 INFO MainProcess be : (38422, 12)
+2024-02-28 12:44:51,878 INFO MainProcess        Loaded 38422 images
+2024-02-28 12:44:52,209 INFO MainProcess df : (37992, 12)
+2024-02-28 12:47:08,192 INFO MainProcess        Loaded 37992 images
+2024-02-28 12:47:08,524 INFO MainProcess 76 : (38746, 12)
+2024-02-28 12:49:30,936 INFO MainProcess        Loaded 38746 images
+2024-02-28 12:49:31,275 INFO MainProcess 54 : (37459, 12)
+2024-02-28 12:51:48,040 INFO MainProcess        Loaded 37459 images
+2024-02-28 12:51:48,374 INFO MainProcess 78 : (38445, 12)
+2024-02-28 12:54:05,392 INFO MainProcess        Loaded 38445 images
+2024-02-28 12:54:05,725 INFO MainProcess 9a : (37542, 12)
+2024-02-28 12:56:23,305 INFO MainProcess        Loaded 37542 images
+2024-02-28 12:56:23,634 INFO MainProcess 93 : (38781, 12)
+2024-02-28 12:58:44,130 INFO MainProcess        Loaded 38781 images
+2024-02-28 12:58:44,466 INFO MainProcess ae : (38316, 12)
+2024-02-28 13:01:04,434 INFO MainProcess        Loaded 38316 images
+2024-02-28 13:01:04,772 INFO MainProcess d4 : (38193, 12)
+2024-02-28 13:03:18,928 INFO MainProcess        Loaded 38193 images
+2024-02-28 13:03:19,264 INFO MainProcess d1 : (38131, 12)
+2024-02-28 13:05:36,197 INFO MainProcess        Loaded 38131 images
+2024-02-28 13:05:36,537 INFO MainProcess 74 : (38112, 12)
+2024-02-28 13:07:56,927 INFO MainProcess        Loaded 38112 images
+2024-02-28 13:07:57,265 INFO MainProcess 5e : (38602, 12)
+2024-02-28 13:10:16,200 INFO MainProcess        Loaded 38602 images
+2024-02-28 13:10:16,535 INFO MainProcess db : (37422, 12)
+2024-02-28 13:12:35,133 INFO MainProcess        Loaded 37422 images
+2024-02-28 13:12:35,473 INFO MainProcess c9 : (37993, 12)
+2024-02-28 13:14:51,154 INFO MainProcess        Loaded 37993 images
+2024-02-28 13:14:51,490 INFO MainProcess 20 : (38387, 12)
+2024-02-28 13:17:16,459 INFO MainProcess        Loaded 38387 images
+2024-02-28 13:17:16,792 INFO MainProcess fa : (38263, 12)
+2024-02-28 13:19:39,811 INFO MainProcess        Loaded 38263 images
+2024-02-28 13:19:40,147 INFO MainProcess 1c : (37599, 12)
+2024-02-28 13:21:58,061 INFO MainProcess        Loaded 37599 images
+2024-02-28 13:21:58,397 INFO MainProcess 30 : (38826, 12)
+2024-02-28 13:24:21,901 INFO MainProcess        Loaded 38826 images
+2024-02-28 13:24:22,236 INFO MainProcess 32 : (37222, 12)
+2024-02-28 13:26:36,985 INFO MainProcess        Loaded 37222 images
+2024-02-28 13:26:37,317 INFO MainProcess 49 : (38795, 12)
+2024-02-28 13:29:03,952 INFO MainProcess        Loaded 38795 images
+2024-02-28 13:29:04,288 INFO MainProcess 2d : (38559, 12)
+2024-02-28 13:31:26,922 INFO MainProcess        Loaded 38559 images
+2024-02-28 13:31:27,258 INFO MainProcess c6 : (38825, 12)
+2024-02-28 13:33:49,585 INFO MainProcess        Loaded 38825 images
+2024-02-28 13:33:49,916 INFO MainProcess 22 : (38115, 12)
+2024-02-28 13:36:10,896 INFO MainProcess        Loaded 38115 images
+2024-02-28 13:36:11,233 INFO MainProcess 0f : (38374, 12)
+2024-02-28 13:38:30,769 INFO MainProcess        Loaded 38374 images
+2024-02-28 13:38:31,106 INFO MainProcess ac : (38040, 12)
+2024-02-28 13:40:52,570 INFO MainProcess        Loaded 38040 images
+2024-02-28 13:40:52,910 INFO MainProcess 55 : (38097, 12)
+2024-02-28 13:43:08,982 INFO MainProcess        Loaded 38097 images
+2024-02-28 13:43:09,332 INFO MainProcess 80 : (37745, 12)
+2024-02-28 13:45:29,078 INFO MainProcess        Loaded 37744 images
+2024-02-28 13:45:29,413 INFO MainProcess 10 : (37688, 12)
+2024-02-28 13:47:45,541 INFO MainProcess        Loaded 37688 images
+2024-02-28 13:47:45,878 INFO MainProcess 05 : (38321, 12)
+2024-02-28 13:50:09,224 INFO MainProcess        Loaded 38321 images
+2024-02-28 13:50:09,562 INFO MainProcess e2 : (38405, 12)
+2024-02-28 13:52:30,322 INFO MainProcess        Loaded 38405 images
+2024-02-28 13:52:30,658 INFO MainProcess e9 : (37351, 12)
+2024-02-28 13:54:50,473 INFO MainProcess        Loaded 37351 images
+2024-02-28 13:54:50,809 INFO MainProcess 5a : (38177, 12)
+2024-02-28 13:57:11,641 INFO MainProcess        Loaded 38177 images
+2024-02-28 13:57:11,979 INFO MainProcess 79 : (38037, 12)
+2024-02-28 13:59:30,920 INFO MainProcess        Loaded 38037 images
+2024-02-28 13:59:31,257 INFO MainProcess 57 : (38675, 12)
+2024-02-28 14:01:46,977 INFO MainProcess        Loaded 38675 images
+2024-02-28 14:01:47,314 INFO MainProcess 2c : (38668, 12)
+2024-02-28 14:04:06,638 INFO MainProcess        Loaded 38668 images
+2024-02-28 14:04:06,973 INFO MainProcess a4 : (39081, 12)
+2024-02-28 14:06:32,502 INFO MainProcess        Loaded 39081 images
+2024-02-28 14:06:32,844 INFO MainProcess 6a : (38631, 12)
+2024-02-28 14:08:55,695 INFO MainProcess        Loaded 38631 images
+2024-02-28 14:08:56,033 INFO MainProcess 6d : (37619, 12)
+2024-02-28 14:11:11,580 INFO MainProcess        Loaded 37619 images
+2024-02-28 14:11:11,917 INFO MainProcess 7d : (38589, 12)
+2024-02-28 14:13:32,872 INFO MainProcess        Loaded 38589 images
+2024-02-28 14:13:33,209 INFO MainProcess 88 : (38211, 12)
+2024-02-28 14:15:52,575 INFO MainProcess        Loaded 38211 images
+2024-02-28 14:15:52,906 INFO MainProcess 94 : (38145, 12)
+2024-02-28 14:18:08,978 INFO MainProcess        Loaded 38145 images
+2024-02-28 14:18:09,315 INFO MainProcess e7 : (38797, 12)
+2024-02-28 14:20:31,912 INFO MainProcess        Loaded 38797 images
+2024-02-28 14:20:32,248 INFO MainProcess 70 : (37227, 12)
+2024-02-28 14:22:46,016 INFO MainProcess        Loaded 37227 images
+2024-02-28 14:22:46,353 INFO MainProcess e0 : (38475, 12)
+2024-02-28 14:25:05,305 INFO MainProcess        Loaded 38475 images
+2024-02-28 14:25:05,635 INFO MainProcess 36 : (38460, 12)
+2024-02-28 14:27:28,439 INFO MainProcess        Loaded 38460 images
+2024-02-28 14:27:28,774 INFO MainProcess 9d : (38055, 12)
+2024-02-28 14:29:45,221 INFO MainProcess        Loaded 38055 images
+2024-02-28 14:29:45,553 INFO MainProcess 50 : (38617, 12)
+2024-02-28 14:32:06,228 INFO MainProcess        Loaded 38617 images
+2024-02-28 14:32:06,565 INFO MainProcess 07 : (37315, 12)
+2024-02-28 14:34:23,135 INFO MainProcess        Loaded 37315 images
+2024-02-28 14:34:23,473 INFO MainProcess e1 : (37967, 12)
+2024-02-28 14:36:40,643 INFO MainProcess        Loaded 37967 images
+2024-02-28 14:36:40,981 INFO MainProcess ed : (39013, 12)
+2024-02-28 14:39:02,487 INFO MainProcess        Loaded 39013 images
+2024-02-28 14:39:02,824 INFO MainProcess c2 : (38636, 12)
+2024-02-28 14:41:26,860 INFO MainProcess        Loaded 38636 images
+2024-02-28 14:41:27,205 INFO MainProcess a7 : (37964, 12)
+2024-02-28 14:43:45,284 INFO MainProcess        Loaded 37964 images
+2024-02-28 14:43:45,617 INFO MainProcess 8b : (39271, 12)
+2024-02-28 14:46:05,424 INFO MainProcess        Loaded 39271 images
+2024-02-28 14:46:05,760 INFO MainProcess 0e : (37973, 12)
+2024-02-28 14:48:21,797 INFO MainProcess        Loaded 37973 images
+2024-02-28 14:48:22,131 INFO MainProcess f2 : (38053, 12)
+2024-02-28 14:50:44,297 INFO MainProcess        Loaded 38053 images
+2024-02-28 14:50:44,628 INFO MainProcess cf : (38676, 12)
+2024-02-28 14:53:08,840 INFO MainProcess        Loaded 38676 images
+2024-02-28 14:53:09,181 INFO MainProcess 4d : (38589, 12)
+2024-02-28 14:55:28,894 INFO MainProcess        Loaded 38589 images
+2024-02-28 14:55:29,232 INFO MainProcess 8d : (38084, 12)
+2024-02-28 14:57:47,249 INFO MainProcess        Loaded 38084 images
+2024-02-28 14:57:47,587 INFO MainProcess f0 : (39007, 12)
+2024-02-28 15:00:12,833 INFO MainProcess        Loaded 39007 images
+2024-02-28 15:00:13,173 INFO MainProcess ff : (38782, 12)
+2024-02-28 15:02:36,939 INFO MainProcess        Loaded 38782 images
+2024-02-28 15:02:37,273 INFO MainProcess 16 : (38748, 12)
+2024-02-28 15:05:01,366 INFO MainProcess        Loaded 38748 images
+2024-02-28 15:05:01,712 INFO MainProcess f4 : (38289, 12)
+2024-02-28 15:07:21,207 INFO MainProcess        Loaded 38289 images
+2024-02-28 15:07:21,543 INFO MainProcess 4c : (39143, 12)
+2024-02-28 15:09:45,583 INFO MainProcess        Loaded 39143 images
+2024-02-28 15:09:45,917 INFO MainProcess 01 : (38567, 12)
+2024-02-28 15:12:11,369 INFO MainProcess        Loaded 38567 images
+2024-02-28 15:12:11,703 INFO MainProcess 3c : (37865, 12)
+2024-02-28 15:14:33,098 INFO MainProcess        Loaded 37865 images
+2024-02-28 15:14:33,508 INFO MainProcess 4e : (38608, 12)
+2024-02-28 15:16:54,682 INFO MainProcess        Loaded 38608 images
+2024-02-28 15:16:55,018 INFO MainProcess 2f : (37920, 12)
+2024-02-28 15:19:19,329 INFO MainProcess        Loaded 37918 images
+2024-02-28 15:19:19,669 INFO MainProcess 82 : (37723, 12)
+2024-02-28 15:21:38,348 INFO MainProcess        Loaded 37723 images
+2024-02-28 15:21:38,687 INFO MainProcess ea : (37581, 12)
+2024-02-28 15:23:55,737 INFO MainProcess        Loaded 37581 images
+2024-02-28 15:23:56,081 INFO MainProcess c4 : (38817, 12)
+2024-02-28 15:26:20,481 INFO MainProcess        Loaded 38817 images
+2024-02-28 15:26:20,819 INFO MainProcess bd : (37574, 12)
+2024-02-28 15:28:42,171 INFO MainProcess        Loaded 37574 images
+2024-02-28 15:28:42,505 INFO MainProcess a1 : (38333, 12)
+2024-02-28 15:31:00,516 INFO MainProcess        Loaded 38333 images
+2024-02-28 15:31:00,853 INFO MainProcess 3b : (38759, 12)
+2024-02-28 15:33:24,560 INFO MainProcess        Loaded 38759 images
+2024-02-28 15:33:24,895 INFO MainProcess 11 : (38290, 12)
+2024-02-28 15:35:46,150 INFO MainProcess        Loaded 38290 images
+2024-02-28 15:35:46,487 INFO MainProcess 85 : (37995, 12)
+2024-02-28 15:38:03,915 INFO MainProcess        Loaded 37995 images
+2024-02-28 15:38:04,252 INFO MainProcess c7 : (38212, 12)
+2024-02-28 15:40:24,476 INFO MainProcess        Loaded 38212 images
+2024-02-28 15:40:24,816 INFO MainProcess 63 : (39360, 12)
+2024-02-28 15:42:48,247 INFO MainProcess        Loaded 39360 images
+2024-02-28 15:42:48,602 INFO MainProcess d2 : (37317, 12)
+2024-02-28 15:45:00,162 INFO MainProcess        Loaded 37317 images
+2024-02-28 15:45:00,500 INFO MainProcess bc : (37654, 12)
+2024-02-28 15:47:17,411 INFO MainProcess        Loaded 37654 images
+2024-02-28 15:47:17,748 INFO MainProcess a0 : (37834, 12)
+2024-02-28 15:49:36,445 INFO MainProcess        Loaded 37834 images
+2024-02-28 15:49:36,782 INFO MainProcess cc : (38234, 12)
+2024-02-28 15:51:53,408 INFO MainProcess        Loaded 38234 images
+2024-02-28 15:51:53,745 INFO MainProcess 26 : (37990, 12)
+2024-02-28 15:54:10,361 INFO MainProcess        Loaded 37990 images
+2024-02-28 15:54:10,697 INFO MainProcess 7e : (37535, 12)
+2024-02-28 15:56:27,106 INFO MainProcess        Loaded 37535 images
+2024-02-28 15:56:27,452 INFO MainProcess 6e : (37496, 12)
+2024-02-28 15:58:44,282 INFO MainProcess        Loaded 37496 images
+2024-02-28 15:58:44,618 INFO MainProcess ad : (37451, 12)
+2024-02-28 16:00:56,909 INFO MainProcess        Loaded 37451 images
+2024-02-28 16:00:57,246 INFO MainProcess c0 : (38731, 12)
+2024-02-28 16:03:18,117 INFO MainProcess        Loaded 38711 images
+2024-02-28 16:03:18,453 INFO MainProcess b8 : (38714, 12)
+2024-02-28 16:05:36,567 INFO MainProcess        Loaded 38714 images
+2024-02-28 16:05:36,899 INFO MainProcess 5d : (38121, 12)
+2024-02-28 16:07:53,699 INFO MainProcess        Loaded 38121 images
+2024-02-28 16:07:54,033 INFO MainProcess 1b : (38045, 12)
+2024-02-28 16:10:13,013 INFO MainProcess        Loaded 38045 images
+2024-02-28 16:10:13,349 INFO MainProcess d5 : (37989, 12)
+2024-02-28 16:12:26,238 INFO MainProcess        Loaded 37989 images
+2024-02-28 16:12:26,573 INFO MainProcess d7 : (39225, 12)
+2024-02-28 16:14:49,990 INFO MainProcess        Loaded 39225 images
+2024-02-28 16:14:50,328 INFO MainProcess d9 : (38122, 12)
+2024-02-28 16:17:04,397 INFO MainProcess        Loaded 38122 images
+2024-02-28 16:17:04,732 INFO MainProcess bf : (37630, 12)
+2024-02-28 16:19:21,964 INFO MainProcess        Loaded 37630 images
+2024-02-28 16:19:22,302 INFO MainProcess a3 : (38043, 12)
+2024-02-28 16:21:39,539 INFO MainProcess        Loaded 38043 images
+2024-02-28 16:21:39,871 INFO MainProcess 98 : (38115, 12)
+2024-02-28 16:23:55,719 INFO MainProcess        Loaded 38115 images
+2024-02-28 16:23:56,050 INFO MainProcess a8 : (38707, 12)
+2024-02-28 16:26:25,224 INFO MainProcess        Loaded 38707 images
+2024-02-28 16:26:25,562 INFO MainProcess 0c : (38435, 12)
+2024-02-28 16:28:41,216 INFO MainProcess        Loaded 38435 images
+2024-02-28 16:28:41,549 INFO MainProcess bb : (37863, 12)
+2024-02-28 16:30:58,154 INFO MainProcess        Loaded 37863 images
+2024-02-28 16:30:58,490 INFO MainProcess 2b : (37803, 12)
+2024-02-28 16:33:11,578 INFO MainProcess        Loaded 37803 images
+2024-02-28 16:33:11,915 INFO MainProcess 60 : (37658, 12)
+2024-02-28 16:35:33,099 INFO MainProcess        Loaded 37658 images
+2024-02-28 16:35:33,436 INFO MainProcess 1d : (38674, 12)
+2024-02-28 16:37:53,141 INFO MainProcess        Loaded 38674 images
+2024-02-28 16:37:53,479 INFO MainProcess 77 : (38298, 12)
+2024-02-28 16:40:13,882 INFO MainProcess        Loaded 38298 images
+2024-02-28 16:40:14,222 INFO MainProcess 15 : (38971, 12)
+2024-02-28 16:42:39,981 INFO MainProcess        Loaded 38971 images
+2024-02-28 16:42:40,315 INFO MainProcess e8 : (37804, 12)
+2024-02-28 16:45:00,758 INFO MainProcess        Loaded 37804 images
+2024-02-28 16:45:01,096 INFO MainProcess f5 : (38322, 12)
+2024-02-28 16:47:24,937 INFO MainProcess        Loaded 38322 images
+2024-02-28 16:47:25,274 INFO MainProcess 81 : (36938, 12)
+2024-02-28 16:49:40,551 INFO MainProcess        Loaded 36938 images
+2024-02-28 16:49:40,888 INFO MainProcess 03 : (39149, 12)
+2024-02-28 16:52:02,608 INFO MainProcess        Loaded 39149 images
+2024-02-28 16:52:02,942 INFO MainProcess 02 : (37710, 12)

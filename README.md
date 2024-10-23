@@ -29,9 +29,19 @@ python3 extract_image_caption.py -i <input_directory> -o <output_directory> -n <
 - Install faiss package for nearest neighbor search   
 <code>conda install -c conda-forge faiss</code>   
 - Install other dependencies  
-<code>conda install scikit-learn accelerate -c conda-forge</code>
+<code>conda install scikit-learn accelerate -c conda-forge </code>
 - Install ScientificImageCaption Package  
 <code>pip install git+https://github.com/Khempawin/scientific-image-caption-pair.git</code>  
+
+## New Conda
+ <code>conda create -n faiss python=3.11.7</code>  
+ <code>conda activate faiss</code>  
+ <code>conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia</code>  
+ <code>conda install conda-forge:pandas conda-forge:numpy conda-forge:matplotlib conda-forge:scikit-learn</code>  
+ <code>conda install conda-forge:pyarrow</code>  
+ <code>conda install conda-forge:transformers  conda-forge:datasets conda-forge::accelerate</code>  
+ <code>conda install -c pytorch -c nvidia faiss-gpu=1.8.0</code>  
+ <code>conda install conda-forge::mpi4py</code>
 
 - Dev interactive  
 <code>conda install tqdm jupyter ipywidgets ipython</code>
